@@ -15,12 +15,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_142937) do
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.bigint "team_id", null: false
+    t.bigint "home_team_id"
+    t.bigint "away_team_id"
     t.date "date"
     t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_games_on_team_id"
+    t.index ["away_team_id"], name: "index_games_on_away_team_id"
+    t.index ["home_team_id"], name: "index_games_on_home_team_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -67,7 +69,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_142937) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "games", "teams"
+  add_foreign_key "games", "teams", column: "away_team_id"
+  add_foreign_key "games", "teams", column: "home_team_id"
   add_foreign_key "groups", "games"
   add_foreign_key "groups", "users"
   add_foreign_key "user_groups", "groups"
