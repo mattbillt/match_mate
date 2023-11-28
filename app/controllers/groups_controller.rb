@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
+  before_action :set_group, only: [:join]
 
   def new
     @game = Game.find(params[:game_id])
@@ -18,9 +19,23 @@ class GroupsController < ApplicationController
     end
   end
 
+  def join
+    @user_group = UserGroup.new(user: current_user, group: @group)
+
+    if @user_group.save
+      redirect_to game_group_path(@group.game, @group), notice: 'You have joined the group.'
+    else
+      redirect_to game_group_path(@group.game, @group), alert: 'Unable to join the group.'
+    end
+  end
+
   private
 
   def group_params
     params.require(:group).permit(:name)
+  end
+
+  def set_group
+    @group = Group.find(params[:id])
   end
 end

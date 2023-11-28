@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :games do
-    resources :groups, only: [:new, :create]
+    resources :groups, only: [:new, :create] do
+      post 'join', on: :member
+    end
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
