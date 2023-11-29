@@ -1,1 +1,30 @@
 // Specific CSS for your home-page
+.main_stuff{
+  background-color: bisque;
+}
+
+.container{
+  display: flex;
+  justify-content: space-evenly;
+  // margin-right: 0px;
+  // margin-left: 0px;
+
+}
+
+.card-item{
+  // overflow: hidden;
+  // background-size: cover;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+
+.cards {
+  width: 400px;
+//   display: grid;
+//   grid-template-columns: 1fr 1fr 1fr;
+//   grid-gap: 16px;
+}
+
+img{
+  width: 400px;
+}
