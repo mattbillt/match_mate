@@ -10,6 +10,18 @@ $headings-font-family:   $headers-font;
 $body-bg:                $light-gray;
 $font-size-base:         1rem;
 
+$theme-colors: (
+  "primary": #002776,
+  "secondary": #997405,
+  "info": #1EC997,
+  "success": #28a745,
+  "danger": #dc3545,
+  "warning": #ffc107,
+  "light": #f8f9fa,
+  "dark": #343a40,
+  "white": white,
+);
+
 // Colors
 $body-color: $gray;
 $primary:    $blue;
