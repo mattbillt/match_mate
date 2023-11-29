@@ -4,13 +4,13 @@
   <!-- Include necessary stylesheets and scripts here -->
   <!-- For example, Bootstrap, Font Awesome, Select2, Flatpickr, etc. -->
 
-  <link rel="stylesheet" href="path/to/select2.css">
-  <link rel="stylesheet" href="path/to/flatpickr.css">
-  <link rel="stylesheet" href="path/to/your/custom/styles.css">
   <!-- Add Font Awesome stylesheet -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-x8IQdgO2eHVF5MMsfrtu/D/sQeG5GAYb8fCJObUvq71VUOMLgWguSIwKluFjGdyoosPVwCLf/Xi9AJ8os+6uZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+
+  <!-- Include your custom styles -->
+  <%= stylesheet_link_tag "application", "/assets/stylesheets/application.scss", "data-turbo-track": "reload" %>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <%= csrf_meta_tags %>
@@ -18,18 +18,21 @@
 
   <title>MatchMate</title>
 
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
 </head>
-
 <body>
+  <!-- Your existing code here -->
   <%= render "shared/navbar" %>
   <%= render "shared/flashes" %>
 
   <%= yield %>
 
-  <!-- Include jQuery and Flatpickr scripts -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Include jQuery and Bootstrap scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+  <!-- Include Flatpickr script -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
   <!-- Include your custom script -->
