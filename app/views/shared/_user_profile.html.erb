@@ -1,0 +1,11 @@
+<div class="user-profile">
+  <%= image_tag @user.profile_picture.url, class: 'user-profile-picture' if @user.profile_picture.present? %>
+
+  <h2><%= @user.name %></h2>
+  <p>Email: <%= @user.email %></p>
+  <p>Language: <%= @user.language %></p>
+  <p>Favorite Team: <%= @user.favorite_team %></p>
+  <p>Preferences: <%= @user.preferences %></p>
+
+  <!-- Add more information as needed -->
+</div>
