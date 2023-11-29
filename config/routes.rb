@@ -2,9 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  get "games", to: "games#index"
-  get "games/:id", to: "games#show"
-
   resources :games do
     resources :groups, only: [:new, :create] do
       post 'join', on: :member
