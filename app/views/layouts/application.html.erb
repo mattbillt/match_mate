@@ -1,22 +1,38 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
-    <title>MatchMate</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+<html lang="en">
+<head>
+  <!-- Include necessary stylesheets and scripts here -->
+  <!-- For example, Bootstrap, Font Awesome, Select2, Flatpickr, etc. -->
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <link rel="stylesheet" href="path/to/select2.css">
+  <link rel="stylesheet" href="path/to/flatpickr.css">
+  <link rel="stylesheet" href="path/to/your/custom/styles.css">
+  <!-- Add Font Awesome stylesheet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-x8IQdgO2eHVF5MMsfrtu/D/sQeG5GAYb8fCJObUvq71VUOMLgWguSIwKluFjGdyoosPVwCLf/Xi9AJ8os+6uZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
 
-    <%= yield %>
-  </body>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <title>MatchMate</title>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
+
+<body>
+  <%= render "shared/navbar" %>
+  <%= render "shared/flashes" %>
+
+  <%= yield %>
+
+  <!-- Include jQuery and Flatpickr scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <!-- Include your custom script -->
+  <script src="path/to/your/script.js"></script>
+</body>
 </html>
