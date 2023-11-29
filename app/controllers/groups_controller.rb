@@ -19,6 +19,27 @@ class GroupsController < ApplicationController
     end
   end
 
+  def edit
+    @group = Group.find(params[:id])
+    @game = @group.game
+  end
+
+  def update
+    @group = Group.find(params[:id])
+    @game = @group.game
+
+    if @group.update(group_params)
+      redirect_to game_group_path(@game, @group), notice: 'Group was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def show
+    @group = Group.find(params[:id])
+    @game = @group.game
+  end
+
   def join
     @user_group = UserGroup.new(user: current_user, group: @group)
 
