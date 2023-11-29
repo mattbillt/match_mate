@@ -1,10 +1,9 @@
-<!--
 <h1><%= @group.name %></h1>
 
 <p>
   <strong>Game:</strong>
-  <%= @group.game.name %>
+  <%= @group.game.home_team.name %> vs <%= @group.game.away_team.name %>
 </p>
 
-<%= button_to 'Join', join_game_group_path(@group.game, @group), method: :post %>
--->
+<%= link_to 'Join', join_game_group_path(@group.game, @group), method: :post %>
+<%= link_to 'Edit', edit_game_group_path(@game, @group) %>
