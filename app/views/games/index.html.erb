@@ -1,14 +1,18 @@
-<h1>Index page</h1>
+<div style="padding: 20px;">
+  <h1 style="font-family: 'Black Ops One'; color: dark; padding: 20px;">Games</h1>
 
+  <div class="row">
+    <% @games.each do |game| %>
+      <div class="col-sm-4">
+        <div class="card bg-newwhite text-primary border-primary shadow m-3" style="border-radius: 15px; height: 200px; width: 100%;">
+          <div class="card-body d-flex flex-column justify-content-center align-items-center">
+            <p><%= "#{game.home_team.name} vs #{game.away_team.name}"%></p>
+            <p><%= "#{game.city}, #{game.date}"%></p>
+            <p><%= link_to "View Game", game_path(game), class: "btn btn-warning rounded-pill shadow"%></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
-<ul>
-  <% @games.each do |game| %>
-    <li>
-      <p><%= "#{game.city}, #{game.date}, #{game.home_team.name} vs #{game.away_team.name}"%></p>
-      <p><%= link_to "View Game", game_path(game)%></p>
-    </li>
-  <% end %>
-</ul>
-
-
-<%= link_to "Homepage", root_path %>
+<%= link_to raw('<i class="fa fa-arrow-left text-warning" style="font-size: 2em; margin: 10px; text-shadow: 1px 1px 2px #888888;"></i>'), :back %>
