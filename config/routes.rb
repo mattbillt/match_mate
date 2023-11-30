@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "games/:id", to: "games#show"
 
   resources :games do
-    resources :groups, only: [:new, :create, :show, :edit, :update, :destroy] do
+    resources :groups, only: [:new, :create, :show, :edit, :update, :destroy, :index] do
       post 'join', on: :member
       post 'leave', on: :member
       delete 'kick/:user_id', to: 'groups#kick', as: 'kick', on: :member
