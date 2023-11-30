@@ -3,4 +3,5 @@
 <p><%= "City: #{@game.city}" %></p>
 <p><%= "Date: #{@game.date}" %></p>
 
+<%= link_to 'Create a Group', new_game_group_path(@game) %>
 <%= link_to "Back to Index", games_path %>
