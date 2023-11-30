@@ -10,8 +10,9 @@
 
 
 puts "Cleaning database..."
-Team.destroy_all
 Game.destroy_all
+Team.destroy_all
+
 
 vasco = Team.create(name:"Vasco Da Gama", city:"Rio De Janerio", country:"Brazil", bio:"TODO")
 corinthians = Team.create(name:"Corinthians", city:"Sao Paulo", country:"Brazil", bio:"TODO")
