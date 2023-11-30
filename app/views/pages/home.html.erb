@@ -1,4 +1,3 @@
-
 <section class="bg-primary text-light text-center">
   <div class="container" style="display: grid; grid-template-columns: 1fr 1fr;">
     <div class="txt" style="width: 100%; max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center;">
@@ -10,28 +9,27 @@
         Chat, make friends, and plan match days together. Local fans can help you score tickets with tips and sharing the best deals. Sign up and jump into the action! 🇧🇷
       </p>
 
-      <div class="d-flex align-items-center justify-content-center mb-3"><!-- Added margin-bottom for spacing -->
+      <div class="d-flex align-items-center justify-content-center mb-3">
         <button class="btn btn-primary btn-lg btn-black-ops">Sign up</button>
       </div>
     </div>
 
-    <div class="d-flex align-items-center justify-content-center"><!-- Center the image -->
+    <div class="d-flex align-items-center justify-content-center">
       <img class="img-fluid" src="https://i.imgur.com/cHGosIr.png" alt="Football supporters" style="width: 100%; height: auto; max-height: 80vh; object-fit: cover;">
     </div>
   </div>
 </section>
 
-
-<!-- Search Team -->
+<!-- Search Team and Date -->
 <section class="text-newwhite pt-3 pb-1 section">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-md-6 d-flex align-items-center justify-content-center mb-3" style="margin-bottom: 10px;">
+      <div class="col-md-3 d-flex align-items-center justify-content-center mb-3">
         <h3 class="mob-md-0" style="margin-bottom: 0; font-family: 'Black Ops One', cursive; color: #333333; font-weight: 300; font-size: 32px; text-align: center;">
-          Search your favorite team
+          Find a match
         </h3>
       </div>
-      <div class="col-md-6 text-center" style="margin-top: -10px;">
+      <div class="col-md-3 text-center mb-3" style="padding-left: 10px;">
         <label for="teamSelect" class="visually-hidden">Select Team</label>
         <select class="form-select" id="teamSelect" aria-label="Select Team">
           <option selected>Teams</option>
@@ -40,6 +38,57 @@
           <option value="3">Three</option>
         </select>
       </div>
+      <div class="col-md-3 text-center mb-3">
+        <input type="text" class="form-control" id="datePicker" placeholder="Select Date Range">
+      </div>
+      <div class="col-md-3 d-flex justify-content-between mb-3">
+        <div class="flex-grow-1 mr-2">
+          <label for="locationSelect" class="visually-hidden">Select Location</label>
+          <select class="form-select" id="locationSelect" aria-label="Select Location">
+            <option selected>Locations</option>
+            <option value="1">Location One</option>
+            <option value="2">Location Two</option>
+            <option value="3">Location Three</option>
+          </select>
+        </div>
+        <button class="btn btn-primary m1-2" id="useMyLocation"><i class="fas fa-map-marker-alt"></i></button>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- Include necessary scripts for jQuery, Select2, and flatpickr -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.js"></script>
+
+<script>
+  // Initialize Select2
+  $(document).ready(function() {
+    $('#teamSelect').select2();
+    $('#locationSelect').select2();
+  });
+
+  // Initialize Flatpickr with range selection by default
+  document.addEventListener('DOMContentLoaded', function () {
+    flatpickr("#datePicker", {
+      mode: "range",
+      enableTime: false,
+      dateFormat: "Y-m-d",
+    });
+  });
+
+  // Use Geolocation API to get the user's current location
+  document.getElementById('useMyLocation').addEventListener('click', function() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+        // You can use the latitude and longitude to search for matches near the user's location
+        console.log('Latitude: ' + lat + ', Longitude: ' + lon);
+      });
+    } else {
+      console.log('Geolocation is not supported by this browser.');
+    }
+  });
+</script>
