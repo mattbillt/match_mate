@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :user_groups
   has_many :groups, through: :user_groups
 
-  attr_accessor :name, :language, :favorite_team, :preferences, :profile_picture
+  # ISSO NÂO ERA NECESSÁRIO
+  # attr_accessor :name, :language, :favorite_team, :preferences, :photo
 
-  mount_uploader :profile_picture, ProfilePictureUploader
 end
