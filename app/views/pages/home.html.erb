@@ -57,6 +57,33 @@
   </div>
 </section>
 
+<section>
+  <div class="container" style="background-color: primary;">
+  <h4 style="margin-top: 50px; text-align: center; color: warning; font-family: 'Black Ops One';">Today's Matches</h4>
+</div>
+  <div class="p-5">
+    <div class="container">
+      <div class="row text-center">
+        <% @games.each do |game| %>
+          <div class="col-md-4 mb-4">
+            <div class="card bg-newwhite text-primary border-primary shadow" style="border-radius: 15px;">
+              <div class="card-body text-center">
+                <p><%= "#{game.home_team.name} vs #{game.away_team.name}"%></p>
+                <p><%= "#{game.city}, #{game.date}"%></p>
+                <p><%= link_to "View Game", game_path(game), class: "btn btn-warning rounded-pill shadow"%></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
 <!-- Include necessary scripts for jQuery, Select2, and flatpickr -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>

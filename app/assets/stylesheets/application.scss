@@ -34,3 +34,7 @@ $theme-colors: (
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.card a:hover {
+  background-color:primary;
+}
