@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "games/:id", to: "games#show"
 
   resources :games do
-    resources :groups, only: [:new, :create, :show, :edit, :update] do
+    resources :groups, only: [:index, :new, :create, :show, :edit, :update] do
       post 'join', on: :member
     end
   end

@@ -1,21 +1,41 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
-    <title>MatchMate</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+<html lang="en">
+<head>
+  <!-- Include necessary stylesheets and scripts here -->
+  <!-- For example, Bootstrap, Font Awesome, Select2, Flatpickr, etc. -->
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <!-- Add Font Awesome stylesheet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-x8IQdgO2eHVF5MMsfrtu/D/sQeG5GAYb8fCJObUvq71VUOMLgWguSIwKluFjGdyoosPVwCLf/Xi9AJ8os+6uZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <body>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+
+  <!-- Include your custom styles -->
+  <%= stylesheet_link_tag "application", "/assets/stylesheets/application.scss", "data-turbo-track": "reload" %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <title>MatchMate</title>
+
+  <%= javascript_importmap_tags %>
+</head>
+<body>
+  <!-- Your existing code here -->
+  <%= render "shared/navbar" %>
   <%= render "shared/flashes" %>
+
   <%= yield %>
-  </body>
+
+  <!-- Include jQuery and Bootstrap scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+  <!-- Include Flatpickr script -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <!-- Include your custom script -->
+  <script src="path/to/your/script.js"></script>
+</body>
 </html>
