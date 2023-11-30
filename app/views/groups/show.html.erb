@@ -17,9 +17,9 @@
   <% end %>
 </ul>
 
-<%= link_to 'Join', join_game_group_path(@group.game, @group), data: { turbo_method: :post } %>
-<%= link_to 'Edit', edit_game_group_path(@game, @group) %>
-<%= link_to 'Leave', leave_game_group_path(@group.game, @group), data: { turbo_method: :post } %>
+<%= button_to 'Join', join_game_group_path(@group.game, @group), method: :post %>
+<%= button_to 'Edit', edit_game_group_path(@group.game, @group), method: :get %>
+<%= button_to 'Leave', leave_game_group_path(@group.game, @group), method: :post %>
 <%= simple_form_for @group, url: game_group_path(@group.game, @group), method: :delete do |f| %>
   <%= f.button :submit, 'Delete', data: { confirm: 'Are you sure?' } %>
 <% end %>
