@@ -3,5 +3,14 @@
 <p><%= "City: #{@game.city}" %></p>
 <p><%= "Date: #{@game.date}" %></p>
 
+<h2>Groups:</h2>
+<ul>
+  <% @game.groups.each do |group| %>
+    <li>
+      <%= link_to group.name, game_group_path(@game, group) %> - <%= group.users.count %> users
+    </li>
+  <% end %>
+</ul>
+
 <%= link_to 'Create a Group', new_game_group_path(@game) %>
 <%= link_to "Back to Index", games_path %>

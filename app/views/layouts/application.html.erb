@@ -1,18 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Include necessary stylesheets and scripts here -->
-  <!-- For example, Bootstrap, Font Awesome, Select2, Flatpickr, etc. -->
 
-  <!-- Add Font Awesome stylesheet -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-x8IQdgO2eHVF5MMsfrtu/D/sQeG5GAYb8fCJObUvq71VUOMLgWguSIwKluFjGdyoosPVwCLf/Xi9AJ8os+6uZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <%= stylesheet_link_tag “application”, “data-turbo-track”: “reload” %>
 
-  <body>
-    <%= render "shared/flashes" %>
   <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
-
-  <!-- Include your custom styles -->
-  <%= stylesheet_link_tag "application", "/assets/stylesheets/application.scss", "data-turbo-track": "reload" %>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <%= csrf_meta_tags %>
@@ -21,9 +13,10 @@
   <title>MatchMate</title>
 
   <%= javascript_importmap_tags %>
+  <%= favicon_link_tag asset_path('logo.png') %>
+ 
 </head>
 <body>
-  <!-- Your existing code here -->
   <%= render "shared/navbar" %>
   <%= render "shared/flashes" %>
 
@@ -37,7 +30,6 @@
   <!-- Include Flatpickr script -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-  <!-- Include your custom script -->
-  <script src="path/to/your/script.js"></script>
+
 </body>
 </html>

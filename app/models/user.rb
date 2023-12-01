@@ -7,9 +7,9 @@ class User < ApplicationRecord
   has_many :user_groups
   has_many :groups, through: :user_groups
 
-  # ISSO NÂO ERA NECESSÁRIO
-  # attr_accessor :name, :language, :favorite_team, :preferences, :photo
 
   has_one_attached :photo
+
+  has_many :messages
 
 end

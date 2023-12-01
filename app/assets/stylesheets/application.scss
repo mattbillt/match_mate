@@ -1,3 +1,4 @@
+
 // Add the Select2 CSS
 @import "select2";
 
@@ -11,6 +12,7 @@ body, h1, .container, .d-sm-flex {
   padding: 0;
   font-family: 'Roboto', sans-serif;
 }
+// Add the Flatpickr CSS using a CDN link
 
 // Graphical variables
 @import "config/fonts";
@@ -39,3 +41,4 @@ $theme-colors: (
 @import "pages/index";
 
 @import 'components/user_profile';
+
