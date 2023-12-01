@@ -1,42 +1,80 @@
 <nav class="navbar navbar-expand-lg" style="background-color: #012B4D;">
+  <style>
+    .navbar-title:hover {
+      text-decoration: underline;
+    }
+
+    .navbar-nav .nav-link.active {
+      text-decoration: underline;
+    }
+
+    .profile-picture img {
+      border-radius: 50%;
+    }
+  </style>
+
+  <script>
+    // Get the current path from the URL
+    const currentPath = window.location.pathname;
+
+    // Find the corresponding navbar link and add the 'active' class
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(function (link) {
+      if (link.getAttribute('href') === currentPath) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+
   <div class="container d-lg-flex align-items-center">
     <div class="logo">
       <%= image_tag 'logo.png', alt: 'logo', class: 'logo', width: '30' %>
     </div>
     <a href="#" class="navbar-title ms-lg-4 me-lg-auto" style="margin-left: 10px; color: #F2F3F4; font-family: 'Black Ops One', cursive; font-size: 30px; text-decoration: none;">Match Mate</a>
-    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" style="background-color: #F2F3F4;">
-      <span class="navbar-toggler-icon custom-toggler" style="border-color: #012B4D;"></span>
-    </button>
 
-    <div class="profile-picture d-none d-lg-block">
+    <div class="profile-picture me-2 d-lg-none">
       <% if user_signed_in? && current_user.profile_picture.attached? %>
-        <%= link_to profile_path, class: 'profile-link' do %>
+        <%= link_to profile_path do %>
           <%= image_tag current_user.profile_picture.variant(resize: '30x30'), alt: 'profile picture', class: 'rounded-circle' %>
         <% end %>
       <% else %>
         <%= image_tag 'https://placehold.co/40x40', alt: 'placeholder', class: 'rounded-circle', width: '30', height: '30' %>
       <% end %>
     </div>
-  </div>
 
-  <div class="collapse navbar-collapse justify-content-end flex-column align-items-end" id="navmenu">
-    <ul class="navbar-nav ms-auto">
-      <li class="nav-item">
-        <%= link_to 'Home', root_path, class: 'nav-link', style: 'color: #ffc107;' %>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'Games', groups_path, class: 'nav-link', style: 'color: #ffc107;' %>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'Groups', "/games/#{@game&.id}/groups", class: 'nav-link', style: 'color: #ffc107;' %>
-      </li>
-      <li class="nav-item me-4">
-        <% if user_signed_in? %>
-          <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
-        <% else %>
-          <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary' %>
-        <% end %>
-      </li>
-    </ul>
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" style="background-color: #F2F3F4;">
+      <span class="navbar-toggler-icon custom-toggler" style="border-color: #012B4D;"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end flex-column align-items-end" id="navmenu">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item">
+          <%= link_to 'Home', root_path, class: "nav-link #{'active' if current_page?(root_path)}", style: 'color: #ffc107;' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Games', games_path, class: "nav-link #{'active' if current_page?(groups_path)}", style: 'color: #ffc107;' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Groups', groups_path, class: "nav-link #{'active' if current_page?(groups_path)}", style: 'color: #ffc107;' %>
+        </li>
+        <li class="nav-item me-4">
+          <% if user_signed_in? %>
+            <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
+          <% else %>
+            <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary' %>
+          <% end %>
+        </li>
+        <li class="nav-item d-none d-lg-block">
+          <div class="profile-picture">
+            <% if user_signed_in? && current_user.profile_picture.attached? %>
+              <%= link_to profile_path do %>
+  <%= image_tag current_user.profile_picture.variant(resize: '30x30'), alt: 'profile picture', class: 'rounded-circle' %>
+<% end %>
+            <% else %>
+              <%= image_tag 'https://placehold.co/40x40', alt: 'placeholder', class: 'rounded-circle', width: '30', height: '30' %>
+            <% end %>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
