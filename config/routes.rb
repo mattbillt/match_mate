@@ -11,8 +11,10 @@ Rails.application.routes.draw do
   get "games/:id", to: "games#show"
 
   resources :games do
-    resources :groups, only: [:index, :new, :create, :show, :edit, :update] do
+    resources :groups, only: [:new, :create, :show, :edit, :update, :destroy, :index] do
       post 'join', on: :member
+      post 'leave', on: :member
+      delete 'kick/:user_id', to: 'groups#kick', as: 'kick', on: :member
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
