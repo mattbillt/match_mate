@@ -6,6 +6,9 @@
   <div class="form-inputs">
 
 
+    <%= f.input :photo, as: :file %>
+
+    <%= f.input :username, required: true %>
     <%= f.input :name, required: true %>
     <%= f.input :language %>
     <%= f.input :favourite_team %>

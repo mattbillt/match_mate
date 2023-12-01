@@ -10,4 +10,6 @@ class User < ApplicationRecord
   # ISSO NÂO ERA NECESSÁRIO
   # attr_accessor :name, :language, :favorite_team, :preferences, :photo
 
+  has_one_attached :photo
+
 end

@@ -84,4 +84,4 @@ end
 # for profile pictures; didn't work!
 # gem 'carrierwave'
 
-  gem "dotenv-rails"
+gem "cloudinary"
