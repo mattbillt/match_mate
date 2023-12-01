@@ -2,13 +2,20 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
+
+
   get "games", to: "games#index"
   get "games/:id", to: "games#show"
   get 'profile', to: 'profiles#show', as: 'profile'
 
   resources :games do
-    resources :groups, only: [:index, :new, :create, :show, :edit, :update] do
+    resources :groups, only: [:new, :create, :show, :edit, :update, :destroy, :index] do
       post 'join', on: :member
+      post 'leave', on: :member
+      delete 'kick/:user_id', to: 'groups#kick', as: 'kick', on: :member
     end
   end
   resources :groups, only: [:index]
