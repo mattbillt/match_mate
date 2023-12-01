@@ -1,30 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Include necessary stylesheets and scripts here -->
-  <!-- For example, Bootstrap, Font Awesome, Select2, Flatpickr, etc. -->
-
-  <!-- Add Font Awesome stylesheet -->
-
-
+  <%= favicon_link_tag asset_path('logo.png') %>
   <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
 
   <!-- Include your custom styles -->
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
   <title>MatchMate</title>
-
   <%= javascript_importmap_tags %>
 </head>
 <body>
-  <!-- Your existing code here -->
   <%= render "shared/navbar" %>
   <%= render "shared/flashes" %>
 
+  <!-- Your existing content here -->
   <%= yield %>
 
   <!-- Include jQuery and Bootstrap scripts -->

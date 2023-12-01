@@ -51,6 +51,11 @@ class GroupsController < ApplicationController
     end
   end
 
+
+  def index
+    @groups = Group.all
+  end
+
   def leave
     @group = Group.find(params[:id])
     @group.users.delete(current_user)
@@ -77,7 +82,7 @@ class GroupsController < ApplicationController
     else
       render :show, alert: 'Error deleting group.'
     end
-  end
+
 
   private
 
