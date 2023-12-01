@@ -2,10 +2,10 @@
 
 import "@hotwired/turbo-rails";
 import "controllers";
+
 //import flatpickr from "flatpickr";
 // import "flatpickr/dist/flatpickr.css";
 import "@rails/actioncable";
-
 
 document.addEventListener('DOMContentLoaded', function() {
   // Flatpickr initialization for the first date picker

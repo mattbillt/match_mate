@@ -80,3 +80,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# for profile pictures; didn't work!
+# gem 'carrierwave'
+
+gem "cloudinary"

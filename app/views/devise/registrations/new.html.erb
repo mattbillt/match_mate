@@ -4,7 +4,16 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.file_field :profile_picture %>
+
+
+    <%= f.input :photo, as: :file %>
+
+    <%= f.input :username, required: true %>
+    <%= f.input :name, required: true %>
+    <%= f.input :language %>
+    <%= f.input :favourite_team %>
+    <%= f.input :preferences %>
+
     <%= f.input :email,
                 required: true,
                 autofocus: true,

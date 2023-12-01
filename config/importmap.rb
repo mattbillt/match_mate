@@ -10,3 +10,4 @@ pin "@popperjs/core", preload: true
 pin "select2", preload: true
 pin "flatpickr", preload: true
 pin "@rails/actioncable", to: "https://cdn.jsdelivr.net/npm/@rails/actioncable@7.1.2/app/assets/javascripts/actioncable.esm.js"
+
