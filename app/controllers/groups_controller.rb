@@ -14,6 +14,7 @@ class GroupsController < ApplicationController
 
     if @group.save
       @group.users << current_user
+      @chatroom = @group.create_chatroom
       redirect_to game_group_path(@game, @group), notice: 'Group was successfully created.'
     else
       render :new
@@ -39,6 +40,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @game = @group.game
+    @chatroom = @group.chatroom
   end
 
   def join

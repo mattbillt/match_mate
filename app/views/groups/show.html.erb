@@ -24,3 +24,8 @@
 <%= simple_form_for @group, url: game_group_path(@group.game, @group), method: :delete do |f| %>
   <%= f.button :submit, 'Delete', data: { confirm: 'Are you sure?' } %>
 <% end %>
+
+<%= link_to 'Chatroom', game_group_chatroom_path(@game, @group, @chatroom) %>
+
+
+<%= link_to 'Back', game_group_path(@group.game, @group) %>
