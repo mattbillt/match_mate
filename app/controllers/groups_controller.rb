@@ -82,7 +82,7 @@ class GroupsController < ApplicationController
     else
       render :show, alert: 'Error deleting group.'
     end
-
+  end
 
   private
 
