@@ -1,14 +1,6 @@
 // Add the Flatpickr CSS using a CDN link
 @import "flatpickr/dist/flatpickr.css";
 
-// Your existing styles...
-
-body, h1, .container, .d-sm-flex {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-}
-
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
@@ -34,7 +26,3 @@ $theme-colors: (
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-
-.card a:hover {
-  background-color:primary;
-}

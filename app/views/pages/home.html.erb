@@ -1,3 +1,17 @@
+<style>
+.btn-black-ops {
+    background-color: #1CAE82;
+    color: #F2F3F4;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-black-ops:hover {
+    background-color: #14795B;
+}
+.btn-primary:hover {background-color: #0D3B7D !important; color: #FFFFFF !important;}
+  </style>
+
 <section class="bg-primary text-light text-center">
   <div class="container" style="display: grid; grid-template-columns: 1fr 1fr;">
     <div class="txt" style="width: 100%; max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center;">
@@ -67,7 +81,7 @@
         <% @games.first(5).each do |game| %>
           <div class="col-md-4 mb-4">
             <div class="card bg-newwhite text-primary border-primary shadow" style="border-radius: 15px; height: 200px; width: 100%;">
-              <div class="card-body d-flex flex-column justify-content-center align-items-center"> <!-- Add d-flex flex-column justify-content-center align-items-center here -->
+              <div class="card-body d-flex flex-column justify-content-center align-items-center">
                 <p><%= "#{game.home_team.name} vs #{game.away_team.name}"%></p>
                 <p><%= "#{game.city}, #{game.date}"%></p>
                 <p><%= link_to "View Game", game_path(game), class: "btn btn-warning rounded-pill shadow"%></p>
@@ -76,11 +90,11 @@
           </div>
         <% end %>
         <div class="col-md-4 mb-4">
-          <div class="card bg-newwhite text-primary border-primary shadow" style="border-radius: 15px; height: 200px; width: 100%;"> <!-- Change the background and text color here -->
+          <div class="card bg-newwhite text-primary border-primary shadow" style="border-radius: 15px; height: 200px; width: 100%;">
            <div class="card-body d-flex flex-column justify-content-center align-items-center">
     <h5>Checkout all available matches.</h5>
     <br> <!-- This will add a gap between the text and the button -->
-    <p><%= link_to "Explore", games_path, class: "btn btn-primary rounded-pill shadow", style: "color: newwhite;"%></p> <!-- Switched the button color to primary -->
+    <p><%= link_to "Explore", games_path, class: "btn btn-primary rounded-pill shadow", style: "color: F2F3F4;"%></p>
 </div>
           </div>
         </div>

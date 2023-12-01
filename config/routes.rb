@@ -4,12 +4,14 @@ Rails.application.routes.draw do
 
   get "games", to: "games#index"
   get "games/:id", to: "games#show"
-
+  get 'profile', to: 'profiles#show', as: 'profile'
   resources :games do
     resources :groups, only: [:index, :new, :create, :show, :edit, :update] do
       post 'join', on: :member
     end
   end
+
+  resources :groups, only: [:index]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
