@@ -13,6 +13,7 @@ class GroupsController < ApplicationController
     @group.creator = current_user
 
     if @group.save
+      @group.users << current_user
       redirect_to game_group_path(@game, @group), notice: 'Group was successfully created.'
     else
       render :new
