@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get "games/:id", to: "games#show"
   get 'profile', to: 'profiles#show', as: 'profile'
   get 'signup', to: 'users#new'
+  get 'home', to: 'pages#home', as: 'home'
+
 
   resources :games do
     resources :groups, only: [:new, :create, :show, :edit, :update, :destroy, :index] do
