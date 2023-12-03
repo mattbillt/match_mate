@@ -1,0 +1,115 @@
+// _sidebar.scss
+
+:root {
+  --primary-color: #191919;
+  --white: #FFFFFF;
+  --sidebar-primary: #353E47;
+  --sidebar-primary-hover: #353E47;
+  --sidebar-background: #070E13;
+  --background: #F1F3FF;
+  --text-link: #FFFFFF;
+  --headline: #CBD1D8;
+  --expand-button: #353E47;
+  --logout: #FA7575;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  min-height: 860px;
+  height: 100%;
+  padding: 16px 0px;
+  border-radius: 16px;
+  max-width: 18rem;
+  display: flex;
+  color: var(--white);
+  flex-direction: column;
+  background-color: var(--sidebar-background);
+  transition: max-width 0.1s ease-in-out;
+}
+
+body.collapsed .sidebar {
+  max-width: 80px;
+  display: flex;
+  align-items: center;
+}
+
+// ... (rest of your existing styles)
+
+.search__wrapper {
+  padding: 0 16px;
+  position: relative;
+}
+
+.search__wrapper input {
+  background-color: var(--background);
+  height: 40px;
+  width: 100%;
+  border-radius: 8px;
+  padding: 0 8px;
+  padding-left: 32px;
+  flex-grow: 1;
+  outline: none;
+  border: none;
+}
+
+// ... (rest of your existing styles)
+
+.sidebar__profile {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-direction: row;
+  padding: 0 16px;
+  color: var(--text-link);
+  overflow-x: hidden;
+  min-height: 42px;
+}
+
+.avatar__wrapper {
+  position: relative;
+  display: flex;
+}
+
+.avatar {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+// ... (rest of your existing styles)
+
+.expand-btn {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background-color: var(--expand-button);
+  z-index: 2;
+  right: -18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.expand-btn svg {
+  transform: rotate(-180deg);
+  stroke: var(--white);
+  width: 20px;
+  height: 20px;
+}
+
+body.collapsed .expand-btn svg {
+  transform: rotate(-360deg);
+}
+
+.bottom-links {
+  margin-top: auto;
+}
+
+// ... (rest of your existing styles)
