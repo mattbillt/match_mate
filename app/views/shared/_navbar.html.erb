@@ -1,5 +1,4 @@
-
-<nav class="navbar navbar-expand-lg" style="background-color: #012B4D;">
+<nav class="navbar navbar-expand-lg" style="background: linear-gradient(to left, #012B4D, #001626);">
   <style>
     .navbar-title:hover {
       text-decoration: underline;
@@ -15,10 +14,7 @@
   </style>
 
   <script>
-    // Get the current path from the URL
     const currentPath = window.location.pathname;
-
-    // Find the corresponding navbar link and add the 'active' class
     document.querySelectorAll('.navbar-nav .nav-link').forEach(function (link) {
       if (link.getAttribute('href') === currentPath) {
         link.classList.add('active');

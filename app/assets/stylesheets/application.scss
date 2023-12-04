@@ -150,3 +150,12 @@ body, h1, .container, .d-sm-flex {
     color: map-get($theme-colors, "primary"); // Text color on hover
   }
 }
+
+.navbar-title {
+  margin-left: 10px;
+  color: #F2F3F4;
+  font-family: 'Black Ops One', cursive;
+  font-size: 30px;
+  text-decoration: none;
+  text-shadow: rgba(0, 0, 0, .1) 0 2px 2px;
+}
