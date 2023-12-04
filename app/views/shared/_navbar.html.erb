@@ -54,11 +54,11 @@
       <%= link_to 'Groups', groups_path, class: "nav-link #{'active' if current_page?(groups_path)}", id: 'groups-link' %>
     </li>
     <li class="nav-item me-4">
-      <% if user_signed_in? %>
-        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
-      <% else %>
-        <%= link_to 'Login', new_user_session_path, class: 'btn btn-dark-blue' %>
-      <% end %>
+    <% if user_signed_in? %>
+  <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-dark-blue' %>
+<% else %>
+  <%= button_to 'Login', new_user_session_path, class: 'btn btn-dark-blue' %>
+<% end %>
     </li>
     <li class="nav-item d-none d-lg-block">
       <div class="profile-picture">
