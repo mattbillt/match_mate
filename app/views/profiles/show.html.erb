@@ -1,16 +1,109 @@
-<% if user_signed_in? %>
-  <h1>Your Profile</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-  <div>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: url('https://img.freepik.com/vetores-gratis/vista-superior-da-textura-do-estadio-de-grama-verde-de-futebol_107791-20406.jpg?w=1800&t=st=1701688827~exp=1701689427~hmac=0a3fc50a9c0c68ebbd21d9109739546d4f1916ed7daeff74993eb443ccaed517');
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: none;
+      width: 60%;
+      margin: 20px auto 0;
+      text-align: left;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 1;
+      border: 5px solid transparent;
+      margin-top: 10px;
+      margin-right: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h2 {
+      color: #1CAE82;
+      font-family: 'Black Ops One', cursive;
+      font-size: 24px;
+      margin: 30px 0 10px;
+      padding: 0;
+      text-shadow: none;
+    }
+
+    .card p {
+      width: calc(100% - 20px);
+      padding: 8px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 14px;
+      background-color: transparent; /* Set background to transparent */
+    }
+
+    .card .form-actions {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .card .form-actions a {
+      background-color: #1CAE82;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      text-decoration: none;
+      margin-bottom: 10px;
+    }
+
+    .card .form-actions a:hover {
+      background-color: #ffc107;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <% if user_signed_in? %>
     <% if @user.photo.attached? %>
-      <%= image_tag @user.photo.variant(resize: '100x100'), alt: 'profile picture', class: 'rounded-circle' %>
+    <img src="<%= url_for(@user.photo.variant(resize: '100x100')) %>" alt="profile picture">
     <% else %>
-      <%= image_tag 'https://placehold.co/100x100', alt: 'placeholder', class: 'rounded-circle' %>
+    <img src="https://placehold.co/100x100" alt="placeholder">
     <% end %>
 
-    <p>Name: <%= @user.name %></p>
-    <p>Email: <%= @user.email %></p>
+    <h2><%= @user.name %></h2>
+    <p><strong>Language:</strong> <%= @user.language %></p>
+    <p><strong>Favourite Team:</strong> <%= @user.favourite_team %></p>
+    <p><strong>Preferences:</strong> <%= @user.preferences %></p>
+    <p><strong>Email:</strong> <%= @user.email %></p>
+
+    <div class="form-actions">
+      <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-primary' %>
+    </div>
+    <% else %>
+    <p>You need to sign in to view your profile.</p>
+    <% end %>
   </div>
-<% else %>
-  <p>You need to sign in to view your profile.</p>
-<% end %>
+
+</body>
+
+</html>

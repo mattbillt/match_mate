@@ -1,46 +1,153 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: url('https://img.freepik.com/vetores-gratis/vista-superior-da-textura-do-estadio-de-grama-verde-de-futebol_107791-20406.jpg?w=1800&t=st=1701688827~exp=1701689427~hmac=0a3fc50a9c0c68ebbd21d9109739546d4f1916ed7daeff74993eb443ccaed517');
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+    }
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+    .navbar {
+      padding: 10px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+    h2,
+    h3 {
+      color: #1CAE82;
+      font-family: 'Black Ops One', cursive;
+      font-size: 36px;
+      margin: 0;
+      padding: 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
 
+    .form-container {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 60%;
+      margin: 0 auto;
+      text-align: left;
+      margin-bottom: 20px;
+    }
 
-    <%= f.input :photo, as: :file %>
+    .form-container h2 {
+      margin-bottom: 20px;
+    }
 
-    <%= f.input :username, required: true %>
-    <%= f.input :name, required: true %>
-    <%= f.input :language %>
-    <%= f.input :favourite_team %>
-    <%= f.input :preferences %>
+    .form-container p {
+      width: calc(100% - 20px);
+      padding: 8px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 14px;
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+    .form-container .login-link,
+    .form-actions {
+      text-align: left;
+      margin-top: 15px;
+    }
+
+    .form-actions a,
+    .form-actions button {
+      background-color: transparent; /* Set background to transparent */
+      color: #1CAE82; /* Set text color to desired color */
+      border: none;
+      padding: 0; /* Remove padding */
+      cursor: pointer;
+      font-size: 14px;
+      text-decoration: underline; /* Add underline to text */
+    }
+
+    .form-actions a:hover,
+    .form-actions button:hover {
+      color: #ff0000; /* Change text color on hover if needed */
+    }
+
+    .form-actions {
+      text-align: center;
+      font-size: small;
+      margin-top: 20px; /* Adjust the top margin as needed */
+    }
+
+    .form-actions .update-button {
+      background-color: #ffc107;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-decoration: none;
+    }
+
+    .form-actions .update-button:hover {
+      background-color: #1CAE82;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="form-container">
+    <div class="navbar">
+      <h2>Edit <%= resource_name.to_s.humanize %></h2>
+    </div>
+
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :email, required: true, autofocus: true %>
+        <%= f.input :photo, as: :file %>
+        <%= f.input :username, required: true %>
+        <%= f.input :name, required: true %>
+        <%= f.input :language %>
+        <%= f.input :favourite_team %>
+        <%= f.input :preferences %>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        <% end %>
+
+        <%= f.input :password,
+                    hint: "leave it blank if you don't want to change it",
+                    required: false,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    required: false,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :current_password,
+                    hint: "we need your current password to confirm your changes",
+                    required: true,
+                    input_html: { autocomplete: "current-password" } %>
+      </div>
+
+    <div class="form-actions">
+  <%= f.submit "Update", class: "update-button" %>
+  <br>
+  <div style="margin-top: 20px;"></div> <!-- Add a margin for the gap -->
+  Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+</div>
     <% end %>
 
-
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
+    <div class="form-actions">
+      <%= link_to "Back", :back %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
+</body>
 
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+</html>
