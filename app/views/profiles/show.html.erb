@@ -1,0 +1,16 @@
+<% if user_signed_in? %>
+  <h1>Your Profile</h1>
+
+  <div>
+    <% if @user.photo.attached? %>
+      <%= image_tag @user.photo.variant(resize: '100x100'), alt: 'profile picture', class: 'rounded-circle' %>
+    <% else %>
+      <%= image_tag 'https://placehold.co/100x100', alt: 'placeholder', class: 'rounded-circle' %>
+    <% end %>
+
+    <p>Name: <%= @user.name %></p>
+    <p>Email: <%= @user.email %></p>
+  </div>
+<% else %>
+  <p>You need to sign in to view your profile.</p>
+<% end %>
