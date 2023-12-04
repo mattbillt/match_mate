@@ -55,6 +55,8 @@ gem 'select2-rails'
 
 gem 'flatpickr'
 
+gem "redis", "~> 5.0", ">= 5.0.8"
+
 
 group :development, :test do
   gem "dotenv-rails"
