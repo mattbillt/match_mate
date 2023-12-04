@@ -1,43 +1,51 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #012B4D;">
 
-  <div class="container d-lg-flex align-items-center">
-    <div class="logo">
-      <%= link_to root_path do %>
-        <%= image_tag 'logo.png', alt: 'logo', class: 'logo', width: '30' %>
-      <% end %>
-    </div>
-    <a href="<%= root_path %>" class="navbar-title ms-lg-4 me-lg-auto" style="color: #F2F3F4; font-family: 'Black Ops One', cursive; font-size: 30px; text-decoration: none;">Match Mate</a>
-
-    <div class="profile-picture me-2">
-      <% if user_signed_in? %>
-        <%= link_to profile_path do %>
-          <% if current_user.photo.attached? %>
-            <%= image_tag current_user.photo.variant(resize: '30x30'), alt: 'profile picture', class: 'rounded-circle d-lg-none d-none d-lg-inline' %>
-          <% else %>
-            <%= image_tag 'https://placehold.co/40x40', alt: 'placeholder', class: 'rounded-circle', width: '30', height: '30' %>
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between w-100">
+      <div class="d-flex align-items-center">
+        <div class="logo me-3">
+          <%= link_to root_path do %>
+            <%= image_tag 'logo.png', alt: 'logo', class: 'logo', width: '30' %>
           <% end %>
-        <% end %>
-      <% end %>
-    </div>
+        </div>
 
-    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-      <span class="navbar-toggler-icon custom-toggler"></span>
-    </button>
+        <a href="<%= root_path %>" class="navbar-title me-4" style="color: #F2F3F4; font-family: 'Black Ops One', cursive; font-size: 30px; text-decoration: none;">Match Mate</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon custom-toggler"></span>
+      </button>
+    </div>
 
     <div class="collapse navbar-collapse justify-content-end" id="navmenu">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
+      <ul class="navbar-nav">
+        <li class="nav-item me-2">
           <%= link_to 'Home', root_path, class: "nav-link #{'active' if current_page?(root_path)}" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item me-2">
           <%= link_to 'Games', games_path, class: "nav-link #{'active' if current_page?(games_path)}" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item me-2">
           <%= link_to 'Groups', groups_path, class: "nav-link #{'active' if current_page?(groups_path)}" %>
         </li>
+
+        <li class="nav-item me-2 d-flex align-items-center">
+          <% if user_signed_in? %>
+            <div class="profile-container me-2">
+              <%= link_to profile_path do %>
+                <% if current_user.photo.attached? %>
+                  <%= image_tag current_user.photo.variant(resize: '30x30'), alt: 'profile picture', class: 'rounded-circle' %>
+                <% else %>
+                  <%= image_tag 'https://placehold.co/40x40', alt: 'placeholder', class: 'rounded-circle', width: '30', height: '30' %>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </li>
+
         <li class="nav-item me-4">
           <% if user_signed_in? %>
-            <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
+            <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary d-md-inline' %>
           <% else %>
             <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary' %>
           <% end %>
