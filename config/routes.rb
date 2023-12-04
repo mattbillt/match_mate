@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit, :update]
   resources :groups, only: [:index]
 
   get "up" => "rails/health#show", as: :rails_health_check

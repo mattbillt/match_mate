@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
-before_action :set_game
+
+  before_action :set_game
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -14,5 +15,9 @@ before_action :set_game
 
   def set_game
     @game = Game.find(params[:id]) if params[:id].present?
+  end
+
+  def after_update_path_for(resource)
+    user_path(resource)
   end
 end
