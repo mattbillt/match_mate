@@ -31,8 +31,12 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       width: 60%;
       margin: 0 auto;
-      text-align: left; /* Align the text to the left */
+      text-align: left;
       margin-bottom: 20px;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .form-container h2 {
@@ -83,10 +87,16 @@
       background-color: #ffc107;
     }
 
+    .login-link {
+      text-align: left;
+      margin-left: 20px;
+    }
+
     .login-link a {
       text-decoration: none;
       color: #666;
-      font-size: 14px; /* Smaller font size */
+      font-size: 14px;
+      display: inline-block;
     }
 
     .login-link a:hover {
@@ -106,9 +116,9 @@
       <%= f.input :email, required: false, autofocus: true, input_html: { autocomplete: "email" } %>
       <%= f.input :password, required: false, input_html: { autocomplete: "current-password" } %>
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-      <div class="login-link">
-        <%= link_to "Forgot your password?", new_user_password_path %>
-      </div>
+     <div class="login-link" style="text-align: left; margin-left: 20px;">
+  <%= link_to "Forgot your password?", new_user_password_path %>
+</div>
     </div>
 
     <div class="form-actions">
