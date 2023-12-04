@@ -1,35 +1,126 @@
-<h2>Sign up</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(45deg, #ffc107, #1CAE82);
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+    }
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+    .navbar {
+      padding: 10px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-  <div class="form-inputs">
+    h2 {
+      color: #1CAE82;
+      font-family: 'Black Ops One', cursive;
+      font-size: 36px;
+      margin: 0;
+      padding: 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
 
+    .form-container {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 60%;
+      margin: 0 auto;
+      text-align: left;
+      margin-bottom: 20px; /* Adjusted margin-bottom */
+    }
+
+    .form-container h2 {
+      margin-bottom: 20px;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="email"],
+    .form-container input[type="password"],
+    .form-container select {
+      width: calc(100% - 20px);
+      padding: 8px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 14px;
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container input[type="file"] {
+      border: none;
+    }
+
+    .form-container select {
+      width: 100%;
+    }
+
+    .form-container .login-link,
+    .form-actions {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .form-actions input[type="submit"] {
+      background-color: #1CAE82;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-actions input[type="submit"]:hover {
+      background-color: #ffc107;
+    }
+
+    .login-link a {
+      text-decoration: none;
+      color: #666;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <div class="navbar">
+    <h2>Sign up</h2>
+  </div>
+
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
 
     <%= f.input :photo, as: :file %>
-
-    <%#= f.input :username, required: true %>
     <%= f.input :name, required: true %>
     <%= f.input :language %>
     <%= f.input :favourite_team %>
     <%= f.input :preferences %>
+    <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" } %>
+    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
+    <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
 
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up" %>
+    </div>
+  <% end %>
+
+  <div class="login-link">
+    <p>Already signed up? <a href="<%= new_user_session_path %>">Let's log in</a>.</p>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</body>
+</html>
