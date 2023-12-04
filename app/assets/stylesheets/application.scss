@@ -159,3 +159,11 @@ body, h1, .container, .d-sm-flex {
   text-decoration: none;
   text-shadow: rgba(0, 0, 0, .1) 0 2px 2px;
 }
+.nav-link {
+  color: map-get($theme-colors, newwhite) !important;
+}
+
+.nav-link.active {
+  text-decoration: underline;
+  color: map-get($theme-colors, newwhite) !important;
+}

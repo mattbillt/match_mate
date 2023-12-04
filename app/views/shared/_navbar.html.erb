@@ -42,36 +42,37 @@
       <span class="navbar-toggler-icon custom-toggler" style="border-color: #012B4D;"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-end flex-column align-items-end" id="navmenu">
-      <ul class="navbar-nav ms-auto align-items-center">
-        <li class="nav-item">
-          <%= link_to 'Home', root_path, class: "nav-link #{'active' if current_page?(root_path)}", style: 'color: #ffc107;' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Games', games_path, class: "nav-link #{'active' if current_page?(groups_path)}", style: 'color: #ffc107;' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Groups', groups_path, class: "nav-link #{'active' if current_page?(groups_path)}", style: 'color: #ffc107;' %>
-        </li>
-        <li class="nav-item me-4">
-          <% if user_signed_in? %>
-            <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
-          <% else %>
-            <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary' %>
+<div class="collapse navbar-collapse justify-content-end flex-column align-items-end" id="navmenu">
+  <ul class="navbar-nav ms-auto align-items-center">
+    <li class="nav-item">
+      <%= link_to 'Home', root_path, class: "nav-link #{'active' if current_page?(root_path)}", id: 'home-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Games', games_path, class: "nav-link #{'active' if current_page?(games_path)}", id: 'games-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Groups', groups_path, class: "nav-link #{'active' if current_page?(groups_path)}", id: 'groups-link' %>
+    </li>
+    <li class="nav-item me-4">
+      <% if user_signed_in? %>
+        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
+      <% else %>
+        <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary' %>
+      <% end %>
+    </li>
+    <li class="nav-item d-none d-lg-block">
+      <div class="profile-picture">
+        <% if user_signed_in? && current_user.photo.attached? %>
+          <%= link_to profile_path do %>
+            <%= image_tag current_user.photo.variant(resize: '30x30'), alt: 'profile picture', class: 'rounded-circle' %>
           <% end %>
-        </li>
-        <li class="nav-item d-none d-lg-block">
-          <div class="profile-picture">
-            <% if user_signed_in? && current_user.photo.attached? %>
-              <%= link_to profile_path do %>
-  <%= image_tag current_user.photo.variant(resize: '30x30'), alt: 'profile picture', class: 'rounded-circle' %>
-<% end %>
-            <% else %>
-              <%= image_tag 'https://placehold.co/40x40', alt: 'placeholder', class: 'rounded-circle', width: '30', height: '30' %>
-            <% end %>
-          </div>
-        </li>
-      </ul>
-    </div>
+        <% else %>
+          <%= image_tag 'https://placehold.co/40x40', alt: 'placeholder', class: 'rounded-circle', width: '30', height: '30' %>
+        <% end %>
+      </div>
+    </li>
+  </ul>
+</div>
+
   </div>
 </nav>
