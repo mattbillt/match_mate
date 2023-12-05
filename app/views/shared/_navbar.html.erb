@@ -31,13 +31,13 @@
         </li>
         <% if user_signed_in? %>
           <% if current_user.photo.attached? %>
-            <%= link_to user_path(current_user) do %>
+            <%= link_to profile_path do %>
               <div class="profile-picture me-2 d-md-block">
                 <%= image_tag current_user.photo.variant(resize: '30x30'), alt: 'profile picture', class: 'rounded-circle', style: 'cursor: pointer;' %>
               </div>
             <% end %>
           <% else %>
-            <%= link_to user_path(current_user) do %>
+            <%= link_to profile_path do %>
               <div class="profile-picture me-2 d-md-block">
                 <%= image_tag 'https://placehold.co/40x40', alt: 'placeholder', class: 'rounded-circle', width: '30', height: '30' %>
               </div>
