@@ -1,12 +1,13 @@
 <style>
   body {
-    min-height: 100vh;
     margin: 0;
     padding: 0;
-    background-image: url('https://f.i.uol.com.br/fotografia/2018/06/22/15296685875b2ce3ebd1265_1529668587_3x2_md.jpg');
+    background-image: url('/assets/gramado.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-image: url('https://f.i.uol.com.br/fotografia/2018/06/22/15296685875b2ce3ebd1265_1529668587_3x2_md.jpg');
+    height: 100vh;
   }
 
   .user-profile-container {
@@ -54,17 +55,24 @@
     <h2 class="profile-title">User Profile</h2>
 
     <div class="user-profile-form">
-      <h2>Hi, <%= @user.username %></h2>
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <h2>Hi, <%= @user.name %></h2>
 
-      <% if @user.photo.attached? %>
-        <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
+    <%= link_to edit_user_registration_path, class: 'btn btn-g4' do %>
+      <i class="bi bi-pencil-fill"></i>
+    <% end %>
+  </div>
 
-      <p><%= @user.name %></p>
-      <p>Email: <%= @user.email %></p>
-      <p>Language: <%= @user.language %></p>
-      <p>Favorite Team: <%= @user.favourite_team %></p>
-      <p>Preferences: <%= @user.preferences %></p>
+  <% if @user.photo.attached? %>
+    <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+<br>
+  <p>Email: <%= @user.email %></p>
+  <p>Language: <%= @user.language %></p>
+  <p>Favorite Team: <%= @user.favourite_team %></p>
+  <p>Preferences: <%= @user.preferences %></p>
+</div>
+
     </div>
   </div>
 </div>

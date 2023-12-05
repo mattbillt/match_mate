@@ -52,10 +52,29 @@
     }
 
     .btn-11 {
-      @import 'application';
       display: block;
       margin: 10px auto;
       padding: 5px 10px;
+    }
+
+    .back-btn {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border: none;
+        box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+        color: #808080;
+        text-decoration: none;
+        display: inline-block;
+        transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
+        width: auto;
+        margin-bottom: 20px;
+    }
+
+    .back-btn:hover,
+    .back-btn:focus {
+        transform: scale(1.1);
+        font-size: 18px;
+        transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
     }
 
     .login-link {
@@ -63,20 +82,60 @@
       font-size: 14px;
     }
   }
+
+  .btn-danger {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    color: #dc3545;
+  }
+
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .user-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .trash-button-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
 </style>
 
-<div class="card-container">
+<div class="card-container" style="margin-top: 20px;">
   <div class="card">
     <h2 class="form-title">Edit <%= resource_name.to_s.humanize %></h2>
+    <br>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), method: :put, html: { class: 'apple-form' }) do |f| %>
       <%= f.error_notification %>
 
       <div class="form-inputs">
-        <%= f.input :email, required: true, autofocus: true, class: 'form-control' %>
-
+        <div class="image-container">
+          <% if resource.photo.present? && Cloudinary.config.cloud_name.present? %>
+            <img src="<%= resource.photo.url %>" alt="User photo" class="user-image">
+          <% else %>
+            <img src="https://via.placeholder.com/150" alt="Placeholder" class="user-image">
+          <% end %>
+          <div class="trash-button-container">
+            <button type="button" class="btn btn-danger">
+              <i class="bi bi-trash-fill"></i>
+            </button>
+          </div>
+        </div>
         <%= f.input :photo, as: :file, class: 'form-control' %>
 
+        <%= f.input :email, required: true, autofocus: true, class: 'form-control' %>
         <%= f.input :username, required: true, class: 'form-control' %>
         <%= f.input :name, required: true, class: 'form-control' %>
         <%= f.input :language, class: 'form-control' %>
@@ -104,14 +163,13 @@
         <%= f.button :submit, "Update", class: 'btn-11' %>
       </div>
     <% end %>
-    <br>
+
 <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
   <div style="text-align: center;">
-    <%= link_to "Back", :back, class: 'form-control back-btn' %>
+    <%= link_to 'Back', profile_path, class: 'form-control back-btn', style: 'width: auto; text-decoration: none; display: inline-block; margin-bottom: 20px; color: grey; border: none;' %>
     <br>
     <div>Unhappy?
-    <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
+      <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
+    </div>
   </div>
-</div>
-</div>
 </div>
