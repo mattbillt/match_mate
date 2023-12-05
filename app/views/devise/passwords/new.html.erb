@@ -1,20 +1,31 @@
 <style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-image: url('https://img.freepik.com/fotos-gratis/bola-no-poste-no-campo-de-futebol_23-2147820710.jpg?w=1380&t=st=1701749106~exp=1701749706~hmac=bd48ca2532e31f182f844c2407d75052f3fa09764fdcf61fee7691f6e3598b4a');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+  }
+
   .form-container {
-    margin-top: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    margin-bottom: 0; /* Add this to remove margin-bottom */
   }
 
   .form-card {
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 20px;
     border-radius: 10px;
     text-align: center;
     width: 400px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0; /* Add this to remove margin-bottom */
   }
 
   .form-title {
@@ -22,7 +33,7 @@
     color: #012B4D;
     font-size: 32px;
     margin-bottom: 20px;
-    text-shadow: rgba(0, 0, 0, 0.1) 0 2px 2px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   }
 
   .apple-form {
@@ -49,22 +60,10 @@
       margin: 0 auto 20px;
     }
 
-    .login-link,
-    .signup-link,
-    .forgot-password-link {
+    .login-link {
       margin-top: 15px;
       font-size: 14px;
     }
-  }
-
-  body {
-    background-image: url('https://img.freepik.com/fotos-gratis/bola-no-poste-no-campo-de-futebol_23-2147820710.jpg?w=1380&t=st=1701749106~exp=1701749706~hmac=bd48ca2532e31f182f844c2407d75052f3fa09764fdcf61fee7691f6e3598b4a');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
   }
 </style>
 
@@ -75,21 +74,17 @@
     <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'apple-form' }) do |f| %>
       <%= f.error_notification %>
 
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email", class: 'form-control' } %>
+      <div class="form-inputs">
+        <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email", class: 'form-control' } %>
+      </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Send me reset password instructions", class: 'btn-11' %>
+        <%= f.button :submit, "Reset password", class: 'btn-11' %>
       </div>
     <% end %>
 
     <div class="login-link">
-      Already signed up? <%= link_to 'Login', new_session_path(resource_name) %>
-    </div>
-    <div class="signup-link">
-      Not a member yet? <%= link_to 'Sign up', new_registration_path(resource_name) %>
+      Already remembered your password? <%= link_to 'Log in here', new_session_path(resource_name) %>
     </div>
   </div>
 </div>
