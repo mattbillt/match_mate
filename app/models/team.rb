@@ -3,6 +3,6 @@ class Team < ApplicationRecord
   has_many :games_as_away_team, class_name: "Game", foreign_key: "away_team_id"
 
 
-  include PgSearch::Model
-  multisearchable against: [:name]
+  # include PgSearch::Model
+  # multisearchable against: [:name]
 end
