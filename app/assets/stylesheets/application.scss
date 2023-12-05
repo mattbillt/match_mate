@@ -138,6 +138,7 @@ body, h1, .container, .d-sm-flex {
   text-decoration: none;
   text-shadow: rgba(0, 0, 0, .1) 0 2px 2px;
 }
+
 .nav-link {
   color: map-get($theme-colors, newwhite) !important;
 }
@@ -147,34 +148,54 @@ body, h1, .container, .d-sm-flex {
   color: map-get($theme-colors, newwhite) !important;
 }
 
+.navbar-title:hover {
+  text-decoration: underline;
+}
+
+.navbar-nav .nav-link.active {
+  text-decoration: underline;
+}
+
+.profile-picture img {
+  border-radius: 50%;
+}
+
 .btn-dark-blue {
-  background-color: #001626; /* Very dark blue */
-  color: #ffffff; /* White text */
-  border-color: #001626; /* Border color matches background color */
+  background-color: #001626;
+  color: #ffffff;
+  border-color: #001626;
 
   &:hover {
-    background-color: #ffc107; /* Warning yellow on hover */
-    border-color: #ffc107; /* Border color on hover matches background color */
-    color: #001626; /* Dark blue text on hover */
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #001626;
   }
 }
 
 .today-matches-section {
   background-color: #F2F3F4;
   padding: 20px;
-  border-radius: 0; /* Remove rounded border */
+  border-radius: 0;
   margin-bottom: 20px;
   width: 100%;
-  text-align: center; /* Center-align text */
+  text-align: center;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .today-matches-text {
-  color: #343a40; /* Dark color for the text */
+  color: #343a40;
   font-size: 30px;
-  font-family: 'Black Ops One', cursive; /* Apply Black Ops One font */
+  font-family: 'Black Ops One', cursive;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   margin-bottom: 0;
+}
+
+body {
+  margin-top: 0;
+}
+
+.today-matches-section {
+  margin-top: 0;
 }
