@@ -1,18 +1,95 @@
-<h2>Forgot your password?</h2>
+<style>
+  .form-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+  .form-card {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
+  .form-title {
+    font-family: 'Black Ops One', sans-serif;
+    color: #012B4D;
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-shadow: rgba(0, 0, 0, 0.1) 0 2px 2px;
+  }
+
+  .apple-form {
+    text-align: left;
+
+    .form-control {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: none;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .form-actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .btn-11 {
+      @import 'application';
+      display: block;
+      margin: 0 auto 20px;
+    }
+
+    .login-link,
+    .signup-link,
+    .forgot-password-link {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+  }
+
+  body {
+    background-image: url('https://img.freepik.com/fotos-gratis/bola-no-poste-no-campo-de-futebol_23-2147820710.jpg?w=1380&t=st=1701749106~exp=1701749706~hmac=bd48ca2532e31f182f844c2407d75052f3fa09764fdcf61fee7691f6e3598b4a');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+</style>
+
+<div class="form-container">
+  <div class="form-card">
+    <h2 class="form-title">Forgot your password?</h2>
+
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'apple-form' }) do |f| %>
+      <%= f.error_notification %>
+
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email", class: 'form-control' } %>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Send me reset password instructions", class: 'btn-11' %>
+      </div>
+    <% end %>
+
+    <div class="login-link">
+      Already signed up? <%= link_to 'Login', new_session_path(resource_name) %>
+    </div>
+    <div class="signup-link">
+      Not a member yet? <%= link_to 'Sign up', new_registration_path(resource_name) %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
