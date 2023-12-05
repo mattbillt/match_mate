@@ -1,29 +1,7 @@
-
-// Add the Select2 CSS
-@import "select2";
-
-// Add the Flatpickr CSS using a CDN link
-@import "flatpickr/dist/flatpickr.css";
-
-// Your existing styles...
-
-body, h1, .container, .d-sm-flex {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-}
-// Add the Flatpickr CSS using a CDN link
-
-// Graphical variables
-@import "config/fonts";
-@import "config/colors";
-@import "config/bootstrap_variables";
-@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
-
 $theme-colors: (
   "primary": #012B4D,
   "secondary": #997405,
-  "info": #14795B,
+  "info": #1CAE82,
   "success": #28a745,
   "danger": #dc3545,
   "warning": #ffc107,
@@ -32,13 +10,192 @@ $theme-colors: (
   "newwhite": #F2F3F4,
 );
 
-// External libraries
+body, h1, .container, .d-sm-flex {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
 @import "bootstrap";
 @import "font-awesome";
-
-// Your CSS partials
 @import "components/index";
 @import "pages/index";
-
 @import 'components/user_profile';
 
+.btn-11 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 6px;
+  color: map-get($theme-colors, "newwhite");
+  background: map-get($theme-colors, "info");
+  border: none;
+  box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
+
+  &:hover {
+    background: map-get($theme-colors, "warning");
+    color: map-get($theme-colors, "primary");
+  }
+
+  &:focus {
+    box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+    outline: 0;
+  }
+}
+
+.btn-g2 {
+  align-items: center;
+  appearance: none;
+  background-color: map-get($theme-colors, "warning");
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 3px -1px, rgba(0, 0, 0, .08) 0 3px 4px 0, rgba(0, 0, 0, .06) 0 1px 5px 0;
+  box-sizing: border-box;
+  color: map-get($theme-colors, "primary");
+  cursor: pointer;
+  display: inline-flex;
+  fill: currentcolor;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  height: 40px;
+  justify-content: center;
+  letter-spacing: .25px;
+  line-height: normal;
+  max-width: 100%;
+  overflow: visible;
+  padding: 2px 16px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  will-change: transform, opacity;
+  z-index: 0;
+
+  &:hover {
+    background: map-get($theme-colors, "primary");
+    color: map-get($theme-colors, "warning");
+  }
+}
+
+.btn-g3 {
+  align-items: center;
+  appearance: none;
+  background-color: map-get($theme-colors, "primary");
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 3px -1px, rgba(0, 0, 0, .08) 0 3px 4px 0, rgba(0, 0, 0, .06) 0 1px 5px 0;
+  box-sizing: border-box;
+  color: map-get($theme-colors, "newwhite");
+  cursor: pointer;
+  display: inline-flex;
+  fill: currentcolor;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  height: 40px;
+  justify-content: center;
+  letter-spacing: .25px;
+  line-height: normal;
+  max-width: 100%;
+  overflow: visible;
+  padding: 2px 16px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  will-change: transform, opacity;
+  z-index: 0;
+
+  &:hover {
+    background: map-get($theme-colors, "warning");
+    color: map-get($theme-colors, "primary");
+  }
+}
+
+.navbar-title {
+  margin-left: 10px;
+  color: #F2F3F4;
+  font-family: 'Black Ops One', cursive;
+  font-size: 30px;
+  text-decoration: none;
+  text-shadow: rgba(0, 0, 0, .1) 0 2px 2px;
+}
+
+.nav-link {
+  color: map-get($theme-colors, newwhite) !important;
+}
+
+.nav-link.active {
+  text-decoration: underline;
+  color: map-get($theme-colors, newwhite) !important;
+}
+
+.navbar-title:hover {
+  text-decoration: underline;
+}
+
+.navbar-nav .nav-link.active {
+  text-decoration: underline;
+}
+
+.profile-picture img {
+  border-radius: 50%;
+}
+
+.btn-dark-blue {
+  background-color: #001626;
+  color: #ffffff;
+  border-color: #001626;
+
+  &:hover {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #001626;
+  }
+}
+
+.today-matches-section {
+  background-color: #F2F3F4;
+  padding: 20px;
+  border-radius: 0;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.today-matches-text {
+  color: #343a40;
+  font-size: 30px;
+  font-family: 'Black Ops One', cursive;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  margin-bottom: 0;
+}
+
+body {
+  margin-top: 0;
+}
+
+.today-matches-section {
+  margin-top: 0;
+}

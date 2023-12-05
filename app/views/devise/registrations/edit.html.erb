@@ -1,50 +1,121 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-image: url('https://images.unsplash.com/photo-1459865264687-595d652de67e?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .card-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+  }
+
+  .form-title {
+    font-family: 'Black Ops One', sans-serif;
+    color: #012B4D;
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
 
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+  .apple-form {
+    text-align: left;
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+    .form-control {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: none;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
 
-    <div class="profile-picture">
-    <%= f.input :photo, as: :file %>
-    </div>
+    .form-actions {
+      text-align: center;
+      margin-top: 20px;
+    }
 
-    <%= f.input :username, required: true %>
-    <%= f.input :name, required: true %>
-    <%= f.input :language %>
-    <%= f.input :favourite_team %>
-    <%= f.input :preferences %>
+    .btn-11 {
+      @import 'application';
+      display: block;
+      margin: 10px auto;
+      padding: 5px 10px;
+    }
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+    .login-link {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+  }
+</style>
+
+  
+   
+
+<div class="card-container">
+  <div class="card">
+    <h2 class="form-title">Edit <%= resource_name.to_s.humanize %></h2>
+
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), method: :put, html: { class: 'apple-form' }) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :email, required: true, autofocus: true, class: 'form-control' %>
+
+        <%= f.input :photo, as: :file, class: 'form-control' %>
+
+        <%= f.input :username, required: true, class: 'form-control' %>
+        <%= f.input :name, required: true, class: 'form-control' %>
+        <%= f.input :language, class: 'form-control' %>
+        <%= f.input :favourite_team, class: 'form-control' %>
+        <%= f.input :preferences, class: 'form-control' %>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        <% end %>
+
+        <%= f.input :password,
+                    hint: "leave it blank if you don't want to change it",
+                    required: false,
+                    input_html: { autocomplete: "new-password", class: 'form-control' } %>
+        <%= f.input :password_confirmation,
+                    required: false,
+                    input_html: { autocomplete: "new-password", class: 'form-control' } %>
+        <%= f.input :current_password,
+                    hint: "we need your current password to confirm your changes",
+                    required: true,
+                    input_html: { autocomplete: "current-password", class: 'form-control' } %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Update", class: 'btn-11' %>
+      </div>
     <% end %>
-
-
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-
-
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-
+    <br>
+<div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+  <div style="text-align: center;">
+    <%= link_to "Back", :back, class: 'form-control back-btn' %>
+    <br>
+    <div>Unhappy?
+    <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+</div>
+</div>
+</div>

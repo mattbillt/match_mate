@@ -44,12 +44,13 @@ class GroupsController < ApplicationController
   end
 
   def join
+    @group = Group.find(params[:id])
     @user_group = UserGroup.new(user: current_user, group: @group)
 
     if @user_group.save
       redirect_to game_group_path(@group.game, @group), notice: 'You have joined the group.'
     else
-      redirect_to game_group_path(@group.game, @group), alert: 'Unable to join the group.'
+      redirect_to game_group_path(@group.game, @group), alert: @user_group.errors.full_messages.join(", ")
     end
   end
 
