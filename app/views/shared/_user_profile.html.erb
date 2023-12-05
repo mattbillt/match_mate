@@ -48,10 +48,12 @@
   }
 </style>
 
+
+
+
 <div class="user-profile-container">
   <div class="user-profile-card">
     <h2 class="profile-title">User Profile</h2>
-
     <div class="user-profile-form">
       <h2>Hi, <%= @user.username %></h2>
 
@@ -64,6 +66,9 @@
       <p>Language: <%= @user.language %></p>
       <p>Favorite Team: <%= @user.favourite_team %></p>
       <p>Preferences: <%= @user.preferences %></p>
+      
+      <%= link_to "Edit Profile", edit_user_registration_path %>
+      <%= link_to "Back", :back %>
     </div>
   </div>
 </div>
