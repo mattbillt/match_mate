@@ -27,9 +27,29 @@ botafogo = Team.create(name:"Botafogo", city:"Rio De Janerio", country:"Brazil",
 palmeiras = Team.create(name:"Palmeiras", city:"Sao Paulo", country:"Brazil", bio:"TODO", emblem:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Palmeiras_logo.svg/285px-Palmeiras_logo.svg.png")
 america = Team.create(name:"America MG", city:"Belo Horizonte", country:"Brazil", bio:"TODO", emblem:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Escudo_do_America_Futebol_Clube.svg/240px-Escudo_do_America_Futebol_Clube.svg.png")
 
+# Today
 Game.create(date:"2023-11-28", city:"Rio De Janeiro", home_team:vasco , away_team:corinthians)
 Game.create(date:"2023-11-29", city:"Santos", home_team:santos, away_team:fluminense)
 Game.create(date:"2023-11-29", city:"Rio De Janeiro", home_team:flamengo, away_team:cam)
 Game.create(date:"2023-11-29", city:"Bahia", home_team:bahia, away_team:sp)
 Game.create(date:"2023-11-29", city:"Coritiba", home_team:coritiba, away_team:botafogo)
 Game.create(date:"2023-11-29", city:"Sao Paulo", home_team:palmeiras, away_team:america)
+
+Game.create(date:"2023-12-06", city:"Rio De Janeiro", home_team:vasco , away_team:santos)
+Game.create(date:"2023-12-06", city:"Sao Paulo", home_team:corinthians, away_team:fluminense)
+Game.create(date:"2023-12-06", city:"Rio De Janeiro", home_team:flamengo, away_team:bahia)
+Game.create(date:"2023-12-06", city:"Belo Horizonte", home_team:cam, away_team:sp)
+Game.create(date:"2023-12-06", city:"Salvador", home_team:bahia, away_team:coritiba)
+
+# Past 3 days
+Game.create(date:"2023-12-03", city:"Coritiba", home_team:coritiba, away_team:botafogo)
+Game.create(date:"2023-12-04", city:"Sao Paulo", home_team:palmeiras, away_team:america)
+Game.create(date:"2023-12-05", city:"Belo Horizonte", home_team:cam, away_team:vasco)
+
+# Next 6 days
+Game.create(date:"2023-12-07", city:"Rio De Janeiro", home_team:vasco , away_team:corinthians)
+Game.create(date:"2023-12-08", city:"Santos", home_team:santos, away_team:fluminense)
+Game.create(date:"2023-12-09", city:"Rio De Janeiro", home_team:flamengo, away_team:cam)
+Game.create(date:"2023-12-10", city:"Bahia", home_team:bahia, away_team:sp)
+Game.create(date:"2023-12-11", city:"Coritiba", home_team:coritiba, away_team:botafogo)
+Game.create(date:"2023-12-12", city:"Sao Paulo", home_team:palmeiras, away_team:america)
