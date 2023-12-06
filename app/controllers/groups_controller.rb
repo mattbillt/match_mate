@@ -37,9 +37,11 @@ class GroupsController < ApplicationController
     end
   end
 
+
+  # changed this because it was not finding params correctly
   def show
+    @game = Game.find(params[:game_id])
     @group = Group.find(params[:id])
-    @game = @group.game
     @chatroom = @group.chatroom
     @message = Message.new
   end
