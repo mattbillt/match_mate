@@ -50,9 +50,7 @@
         <li class="nav-item">
           <%= link_to 'Games', games_path, class: "nav-link #{'active' if current_page?(games_path)}", id: 'games-link' %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Groups', groups_path, class: "nav-link #{'active' if current_page?(groups_path)}", id: 'groups-link' %>
-        </li>
+
         <li class="nav-item me-4">
           <% if user_signed_in? %>
             <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-dark-blue' %>
