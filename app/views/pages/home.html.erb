@@ -1,3 +1,12 @@
+<style>
+.widget-card {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    background-color: rgba(242, 243, 244, 0.1);
+    border-radius: 15px;
+}
+</style>
+
 <section class="text-light text-center" style="background: linear-gradient(to right, #012B4D, #001626); display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden;">
     <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; position: relative; max-width: 1200px; overflow: hidden; margin-top: -15px;">
         <div class="txt" style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 20px; position: relative; z-index: 1;">
@@ -25,11 +34,8 @@
         <h2 class="today-matches-text">Today's Matches</h2>
       </section>
 
-   <div class="container" style="display: grid; grid-template-columns: 1fr 3fr;">
-    <!-- Widget Section -->
+   <div class="container widget-card">
     <div class="apifutebol-tabela" data-client-id="WXSWC996ZX43"></div>
-
-    <!-- Cards Section -->
     <section class="p-5">
         <div class="container">
             <div class="row text-center">
