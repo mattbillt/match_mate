@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-  #before_action :authenticate_user!
+
+  before_action :authenticate_user!
 
   # before_action :set_game
   # André said that before uncommenting this line, raise a ticket with him!!!!!!!
