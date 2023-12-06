@@ -1,14 +1,45 @@
-<nav class="navbar navbar-expand-md" style="background: linear-gradient(to left, #012B4D, #001626); margin-bottom: 0;">
+<style>
+.navbar {
+  background: linear-gradient(to left, #012B4D, #001626);
+  margin-bottom: 0;
+}
+
+.navbar-title {
+  margin-left: 10px;
+  color: #F2F3F4;
+  font-family: 'Black Ops One', cursive;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+.navbar-title:hover {
+  text-decoration: none;
+}
+
+.navbar-toggler {
+  background-color: #F2F3F4;
+}
+
+.navbar-toggler-icon {
+  border-color: #012B4D;
+}
+
+.profile-picture {
+  cursor: pointer;
+}
+</style>
+
+<nav class="navbar navbar-expand-md">
   <div class="container d-lg-flex align-items-center">
     <div class="logo">
       <%= link_to root_path do %>
         <%= image_tag 'logo.png', alt: 'logo', class: 'logo', width: '30' %>
       <% end %>
     </div>
-    <a href="<%= root_path %>" class="navbar-title ms-lg-4 me-lg-auto" style="margin-left: 10px; color: #F2F3F4; font-family: 'Black Ops One', cursive; font-size: 30px; text-decoration: none;">Match Mate</a>
+    <a href="<%= root_path %>" class="navbar-title ms-lg-4 me-lg-auto">Match Mate</a>
 
-    <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" style="background-color: #F2F3F4;">
-      <span class="navbar-toggler-icon custom-toggler" style: 'border-color: #012B4D;'></span>
+    <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+      <span class="navbar-toggler-icon custom-toggler"></span>
     </button>
 
     <div class="collapse navbar-collapse justify-content-end flex-column align-items-end" id="navmenu">
@@ -33,7 +64,7 @@
           <% if current_user.photo.attached? %>
             <%= link_to profile_path do %>
               <div class="profile-picture me-2 d-md-block">
-                <%= image_tag current_user.photo.variant(resize: '30x30'), alt: 'profile picture', class: 'rounded-circle', style: 'cursor: pointer;' %>
+                <%= image_tag current_user.photo.variant(resize: '30x30'), alt: 'profile picture', class: 'rounded-circle' %>
               </div>
             <% end %>
           <% else %>

@@ -35,52 +35,52 @@
 
   .apple-form {
     text-align: left;
+  }
 
-    .form-control {
-      width: 100%;
-      margin-bottom: 15px;
-      padding: 10px;
-      border: none;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
+  .form-control {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
 
-    .form-actions {
-      text-align: center;
-      margin-top: 20px;
-    }
+  .form-actions {
+    text-align: center;
+    margin-top: 20px;
+  }
 
-    .btn-11 {
-      display: block;
-      margin: 10px auto;
-      padding: 5px 10px;
-    }
+  .btn-11 {
+    display: block;
+    margin: 10px auto;
+    padding: 5px 10px;
+  }
 
-    .back-btn {
-        padding-top: 15px;
-        padding-bottom: 15px;
-        border: none;
-        box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
-        color: #808080;
-        text-decoration: none;
-        display: inline-block;
-        transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
-        width: auto;
-        margin-bottom: 20px;
-    }
+  .back-btn {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: none;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+    color: #808080;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
+    width: auto;
+    margin-bottom: 20px;
+  }
 
-    .back-btn:hover,
-    .back-btn:focus {
-        transform: scale(1.1);
-        font-size: 18px;
-        transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
-    }
+  .back-btn:hover,
+  .back-btn:focus {
+    transform: scale(1.1);
+    font-size: 18px;
+    transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
+  }
 
-    .login-link {
-      margin-top: 15px;
-      font-size: 14px;
-    }
+  .login-link {
+    margin-top: 15px;
+    font-size: 14px;
   }
 
   .btn-danger {
@@ -164,12 +164,14 @@
       </div>
     <% end %>
 
-<div style="display: flex; justify-content: center; align-items: center; height: 100%;">
-  <div style="text-align: center;">
-    <%= link_to 'Back', profile_path, class: 'form-control back-btn', style: 'width: auto; text-decoration: none; display: inline-block; margin-bottom: 20px; color: grey; border: none;' %>
-    <br>
-    <div>Unhappy?
-      <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
+    <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+      <div style="text-align: center;">
+        <%= link_to 'Back', profile_path, class: 'form-control back-btn', style: 'width: auto; text-decoration: none; display: inline-block; margin-bottom: 20px; color: grey; border: none;' %>
+        <br>
+        <div>Unhappy?
+          <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
