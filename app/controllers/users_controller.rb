@@ -1,15 +1,17 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def show
-    @user = current_user
+    if @user.nil?
+      flash[:alert] = "User not found."
+      redirect_to root_path
+    end
   end
 
   def edit
-    @user = current_user
   end
 
   def update
-    @user = current_user
     if @user.update(user_params)
       redirect_to @user
     else
@@ -17,7 +19,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    redirect_to users_url, notice: 'User was successfully destroyed.'
+  end
+
   private
+
+  def set_user
+    @user = current_user
+  end
 
   def user_params
     params.require(:user).permit(:email, :name, :language, :favorite_team, :preferences, :password, :password_confirmation, :current_password, :photo, :username)
