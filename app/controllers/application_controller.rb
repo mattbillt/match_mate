@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
+
   before_action :authenticate_user!
 
-  before_action :set_game
+  # before_action :set_game
+  # André said that before uncommenting this line, raise a ticket with him!!!!!!!
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 

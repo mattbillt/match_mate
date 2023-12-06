@@ -57,6 +57,7 @@ gem 'flatpickr'
 
 gem "redis", "~> 5.0", ">= 5.0.8"
 
+gem "pg_search"
 
 group :development, :test do
   gem "dotenv-rails"
