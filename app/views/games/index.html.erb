@@ -61,10 +61,20 @@
       <div class="col-sm-4">
         <div class="card bg-newwhite text-primary border-primary shadow m-3" style="border-radius: 15px; height: 200px; width: 100%;">
           <div class="card-body d-flex flex-column justify-content-center align-items-center">
-            <%# image_tag("#{game.home_team.emblem}") %>
-            <p><%= "#{game.home_team.name} vs #{game.away_team.name}"%></p>
-            <p><%= "#{game.city}, #{game.date}"%></p>
-            <p><%= link_to "View Game", game_path(game), class: "btn btn-warning rounded-pill shadow"%></p>
+            <div class="row">
+              <div class="col-md-3">
+                <p><img src="<%= game.home_team.emblem %>" class="emblem-image my-auto mx-auto" alt="<%= game.home_team.name %> Image"></p>
+              </div>
+              <div class="col-md-6">
+                <p><%= "#{game.home_team.name} vs #{game.away_team.name}"%></p>
+                <p><%= "Location: #{game.city}" %></p>
+                <p><%= "Date: #{game.date}" %></p>
+                <p><%= link_to "View Game", game_path(game), class: "btn btn-warning rounded-pill shadow"%></p>
+              </div>
+              <div class="col-md-3">
+                <p><img src="<%= game.away_team.emblem %>" class="emblem-image my-auto mx-auto" alt="<%= game.home_team.name %> Image"></p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
