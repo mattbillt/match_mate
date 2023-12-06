@@ -46,6 +46,16 @@ body {
   align-items: center;
   background-color: #F2F3F4;
 }
+
+.btn-six {
+  color: #f8f9fa;
+  background-color: #012B4D;
+}
+
+.btn-six:hover {
+  color: #012B4D;
+  background-color: #ffc107;
+}
 </style>
 
 <section class="text-light text-center container-style" style="background: linear-gradient(to right, #012B4D, #001626); display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden;">
@@ -88,6 +98,15 @@ body {
                 </div>
               </div>
             <% end %>
+            <div class="col-md-4 mb-4">
+              <div class="card bg-transparent text-primary border-0" style="border-radius: 15px; height: auto; width: 100%; box-shadow: none;">
+                <div class="card-body" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                  <br>
+                  <p>Checkout all available matches</p>
+                  <p><%= link_to "Explore", games_path, class: "btn btn-six" %></p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
