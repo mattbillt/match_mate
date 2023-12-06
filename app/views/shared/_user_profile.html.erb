@@ -1,78 +1,50 @@
 <style>
-  body {
-    margin: 0;
-    padding: 0;
-    background-image: url('/assets/gramado.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: url('https://f.i.uol.com.br/fotografia/2018/06/22/15296685875b2ce3ebd1265_1529668587_3x2_md.jpg');
-    height: 100vh;
-  }
-
-  .user-profile-container {
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .user-profile-card {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    width: 400px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px;
-  }
-
-  .profile-title {
-    font-family: 'Black Ops One', sans-serif;
-    color: #012B4D;
-    font-size: 32px;
-    margin-bottom: 20px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-  }
-
-  .user-profile-form {
-    text-align: left;
-
-    .form-control {
-      width: 100%;
-      margin-bottom: 15px;
-      padding: 10px;
-      border: none;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
-  }
+  body { margin: 0; padding: 0; background-image: url('https://f.i.uol.com.br/fotografia/2018/06/22/15296685875b2ce3ebd1265_1529668587_3x2_md.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh; font-family: 'Black Ops One', sans-serif; color: #F5F5F5; height: 100vh; }
+  .user-profile-container { width: 100%; display: flex; justify-content: center; align-items: center; height: 90vh; margin-bottom: }
+  .user-profile-card { background-color: rgba(245, 245, 245, 0.9); padding: 20px; border-radius: 10px; text-align: left; max-width: 300px; width: 100%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); margin-bottom: 2px; position: relative; }
+  .profile-heading-container { display: flex; justify-content: center; align-items: flex-start; width: 100%; margin-bottom: 20px; }
+  .profile-title { font-family: 'Black Ops One', sans-serif; color: #012B4D; font-size: 28px; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0; }
+  .edit-btn-container { position: absolute; top: 60px; right: 10px; z-index: 2; }
+  .edit-btn { color: #adb5bd; background-color: transparent; border: none; cursor: pointer; font-size: 0.8em; transition: background-color 0.3s, color 0.3s; }
+  .edit-btn:hover { background-color: #ced4da; color: #fff; }
+  .profile-picture-container { display: flex; justify-content: center; align-items: center; margin-top: 10px; position: relative; }
+  .profile-image { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; }
+  .pencil-btn-container { display: flex; justify-content: flex-start; align-items: center; margin-top: 5px; }
+  .pencil-icon { font-size: 16px; margin-right: 5px; }
+  .user-profile-form { text-align: left; color: #343a40; font-family: 'Roboto', sans-serif; width: 100%; }
+  .form-control { width: 100%; margin-bottom: 15px; padding: 10px; border: none; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius: 5px; box-sizing: border-box; }
 </style>
 
 <div class="user-profile-container">
   <div class="user-profile-card">
-    <h2 class="profile-title">User Profile</h2>
-
+    <div class="profile-heading-container">
+      <h2 class="profile-title">User Profile</h2>
+      <div class="edit-btn-container">
+        <a href="<%= edit_user_registration_path %>" class="edit-btn btn btn-danger">
+          <i class="bi bi-pencil-fill"></i>
+        </a>
+      </div>
+    </div>
+    <div class="profile-picture-container">
+      <% if @user.photo.attached? %>
+        <%= cl_image_tag(@user.photo.key, height: 200, width: 200, crop: :fill, class: 'profile-image') %>
+      <% else %>
+        <img src="https://via.placeholder.com/200x200" alt="Profile Image" class="profile-image">
+      <% end %>
+    </div>
+    <div class="pencil-btn-container">
+      <i class="bi bi-pencil-fill pencil-icon"></i>
+    </div>
     <div class="user-profile-form">
-  <div style="display: flex; justify-content: space-between; align-items: center;">
-    <h2>Hi, <%= @user.name %></h2>
-
-    <%= link_to edit_user_registration_path, class: 'btn btn-g4' do %>
-      <i class="bi bi-pencil-fill"></i>
-    <% end %>
-  </div>
-
-  <% if @user.photo.attached? %>
-    <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-<br>
-  <p>Email: <%= @user.email %></p>
-  <p>Language: <%= @user.language %></p>
-  <p>Favorite Team: <%= @user.favourite_team %></p>
-  <p>Preferences: <%= @user.preferences %></p>
-</div>
-
+      <h5 style="color: #012B4D; margin-bottom: 0;">Hi, <%= @user.name %></h5>
+      <% if @user.photo.attached? %>
+        <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+      <br>
+      <p style="color: #343a40;">Email: <%= @user.email %></p>
+      <p style="color: #343a40;">Language: <%= @user.language %></p>
+      <p style="color: #343a40;">Favorite Team: <%= @user.favourite_team %></p>
+      <p style="color: #343a40;">Preferences: <%= @user.preferences %></p>
     </div>
   </div>
 </div>
