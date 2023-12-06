@@ -1,6 +1,21 @@
-<h1>New Group</h1>
+<div class="main-container-group-form">
+  <div class="card-container-group-form">
+    <div class="new-group-form">
+      <h2 id="new-group">New Group</h2>
+    </div>
 
-<%= simple_form_for [@game, @group] do |f| %>
-  <%= f.input :name %>
-  <%= f.button :submit %>
-<% end %>
+    <%= simple_form_for [@game, @group] do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description, as: :text, input_html: { rows: 5 } %>
+      <div class="form-actions-group-form">
+        <%= f.button :submit, class: "btn-12-group-form"%>
+      </div>
+    <% end %>
+
+    <div class="fix-button-position">
+      <div class="form-control back-btn-group-form">
+      <%= link_to "Back", :back %>
+      </div>
+    </div>
+  </div>
+</div>
