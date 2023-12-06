@@ -56,7 +56,6 @@ class GroupsController < ApplicationController
     end
   end
 
-
   def index
     @groups = Group.all
   end
