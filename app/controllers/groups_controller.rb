@@ -41,6 +41,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @game = @group.game
     @chatroom = @group.chatroom
+    @message = Message.new
   end
 
   def join
@@ -53,7 +54,6 @@ class GroupsController < ApplicationController
       redirect_to game_group_path(@group.game, @group), alert: @user_group.errors.full_messages.join(", ")
     end
   end
-
 
   def index
     @groups = Group.all

@@ -118,8 +118,12 @@
   }
 </style>
 
+
+
+
 <div class="user-profile-container">
   <div class="user-profile-card">
+
     <div class="profile-heading-container">
       <h2 class="profile-title">User Profile</h2>
       <div class="edit-btn-container">
@@ -138,16 +142,24 @@
     <div class="pencil-btn-container">
       <i class="bi bi-pencil-fill pencil-icon"></i>
     </div>
+
     <div class="user-profile-form">
       <h5 style="color: #012B4D; margin-bottom: 0;">Hi, <%= @user.name %></h5>
       <% if @user.photo.attached? %>
         <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
       <% end %>
+
       <br>
       <p style="color: #343a40;">Email: <%= @user.email %></p>
       <p style="color: #343a40;">Language: <%= @user.language %></p>
       <p style="color: #343a40;">Favorite Team: <%= @user.favourite_team %></p>
       <p style="color: #343a40;">Preferences: <%= @user.preferences %></p>
+
+
+      
+      <%= link_to "Edit Profile", edit_user_registration_path %>
+      <%= link_to "Back", :back %>
+
     </div>
   </div>
 </div>
