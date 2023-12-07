@@ -1,3 +1,4 @@
+
 <style>
   .navbar {
     background: linear-gradient(to left, #012B4D, #001626);
@@ -28,7 +29,6 @@
     cursor: pointer;
   }
 </style>
-
 <nav class="navbar navbar-expand-md">
   <div class="container d-lg-flex align-items-center">
     <div class="logo">
@@ -50,11 +50,11 @@
         <li class="nav-item">
           <%= link_to 'Games', games_path, class: "nav-link #{'active' if current_page?(games_path)}", id: 'games-link' %>
         </li>
-
+        <!--
         <li class="nav-item">
-          <%#= link_to 'Groups', groups_path, class: "nav-link #{'active' if current_page?(groups_path)}", id: 'groups-link' #%>
+          <%= link_to 'Groups', groups_path, class: "nav-link #{'active' if current_page?(groups_path)}", id: 'groups-link' %>
         </li>
-
+        -->
         <li class="nav-item me-4">
           <% if user_signed_in? %>
             <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-dark-blue' %>
@@ -62,20 +62,23 @@
             <%= button_to 'Login', new_user_session_path, class: 'btn btn-dark-blue' %>
           <% end %>
         </li>
+
         <% if user_signed_in? %>
-          <% if current_user.photo.attached? %>
-            <%= link_to profile_path do %>
-              <div class="profile-picture me-2 d-md-block">
-                <%= image_tag current_user.photo.variant(resize: '30x30'), alt: 'profile picture', class: 'rounded-circle' %>
-              </div>
+          <li class="nav-item">
+            <% if current_user.photo.attached? %>
+              <%= link_to profile_path do %>
+                <div class="profile-picture me-2 d-md-block">
+                  <%= cl_image_tag(current_user.photo.key, height: 30, width: 30, crop: :fill, class: 'rounded-circle') %>
+                </div>
+              <% end %>
+            <% else %>
+              <%= link_to profile_path do %>
+                <div class="profile-picture me-2 d-md-block">
+                  <%= image_tag 'https://placehold.co/40x40', alt: 'placeholder', class: 'rounded-circle', width: '30', height: '30' %>
+                </div>
+              <% end %>
             <% end %>
-          <% else %>
-            <%= link_to profile_path do %>
-              <div class="profile-picture me-2 d-md-block">
-                <%= image_tag 'https://placehold.co/40x40', alt: 'placeholder', class: 'rounded-circle', width: '30', height: '30' %>
-              </div>
-            <% end %>
-          <% end %>
+          </li>
         <% end %>
       </ul>
     </div>

@@ -87,4 +87,4 @@ end
 # for profile pictures; didn't work!
 # gem 'carrierwave'
 
-gem "cloudinary"
+gem 'cloudinary', '~> 1.17.0'
