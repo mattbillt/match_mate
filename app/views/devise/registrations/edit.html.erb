@@ -104,18 +104,20 @@
   }
 
   .image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+     position: relative;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
   }
 
   .user-image {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 2;
   }
 
   .trash-button-container {
@@ -123,6 +125,22 @@
     justify-content: flex-end;
     width: 100%;
   }
+
+  .profile-circle {
+  position: absolute;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom right, #004080 0%, rgb(17, 107, 123) 50%, #ffc107 80%, rgb(0, 153, 51) 100%);
+  clip-path: circle();
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: -28px; /* Half of the height */
+  margin-left: -1px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
 </style>
 
 
@@ -149,6 +167,7 @@
           <% else %>
             <img src="https://via.placeholder.com/150" alt="Placeholder" class="user-image">
           <% end %>
+          <div class="profile-circle"></div>
           <div class="trash-button-container">
             <button type="button" class="btn btn-danger">
               <i class="bi bi-trash-fill"></i>
