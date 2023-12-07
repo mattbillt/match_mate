@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-
+   <script src="https://cdn.api-futebol.com.br/widgets/v1/apifutebol-tabela.js"></script>
 
   <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
 
@@ -29,6 +29,7 @@
   <%= render "shared/navbar" %>
   <%= render "shared/flashes" %>
 
+
   <%= yield %>
 
   <!-- Include jQuery and Bootstrap scripts -->
@@ -39,4 +40,5 @@
   <!-- Include Flatpickr script -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </body>
+<%= render "shared/footer" %>
 </html>
