@@ -16,4 +16,12 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
   end
+
+  def index
+    if params[:query].present?
+      @teams = Team.where('name ILIKE ?', "%#{params[:query]}%")
+    else
+      @teams = Team.all
+    end
+  end
 end
