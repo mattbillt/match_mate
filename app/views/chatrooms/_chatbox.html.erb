@@ -1,7 +1,7 @@
 <!-- app/views/chatrooms/_chatbox.html.erb -->
 
-<div class="container chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-  <h1><%= @group.name %>'s chat</h1>
+<div class="container chatroom " data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+  <h2><%= @group.name %>'s chat</h2>
 
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
