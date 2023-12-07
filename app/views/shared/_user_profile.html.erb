@@ -1,15 +1,13 @@
 <style>
   body {
-    margin: 0;
-    padding: 0;
     background-image: url('https://f.i.uol.com.br/fotografia/2018/06/22/15296685875b2ce3ebd1265_1529668587_3x2_md.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 100%;
     font-family: 'Black Ops One', sans-serif;
     color: #F5F5F5;
-    height: 100vh;
+    margin: 0;
   }
 
   .user-profile-container {
@@ -17,8 +15,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
-    margin-bottom: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    overflow: auto;
   }
 
   .user-profile-card {
@@ -26,16 +26,14 @@
     padding: 20px;
     border-radius: 10px;
     text-align: left;
-    max-width: 300px;
-    width: 100%;
+    width: 300px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    margin-bottom: 2px;
-    position: relative;
+    margin-top: 20px;
   }
 
   .profile-heading-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-start;
     width: 100%;
     margin-bottom: 20px;
@@ -49,13 +47,11 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin: 0;
+    margin-bottom: 10px;
+    margin-left: 30px;
   }
 
   .edit-btn-container {
-    position: absolute;
-    top: 60px;
-    right: 10px;
     z-index: 2;
   }
 
@@ -90,14 +86,13 @@
 
   .pencil-btn-container {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: flex-end;
     margin-top: 5px;
   }
 
   .pencil-icon {
     font-size: 16px;
-    margin-right: 5px;
+    margin-left: 5px;
   }
 
   .user-profile-form {
@@ -105,6 +100,8 @@
     color: #343a40;
     font-family: 'Roboto', sans-serif;
     width: 100%;
+    margin-top: 20px;
+    margin-left: 20px;
   }
 
   .form-control {
@@ -116,14 +113,36 @@
     border-radius: 5px;
     box-sizing: border-box;
   }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .back-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+    color: #808080;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
+    width: auto;
+    margin-bottom: 20px;
+  }
+
+  .back-btn:hover,
+  .back-btn:focus {
+    transform: scale(1.1);
+    font-size: 18px;
+    transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
+  }
 </style>
-
-
-
 
 <div class="user-profile-container">
   <div class="user-profile-card">
-
     <div class="profile-heading-container">
       <h2 class="profile-title">User Profile</h2>
       <div class="edit-btn-container">
@@ -142,24 +161,20 @@
     <div class="pencil-btn-container">
       <i class="bi bi-pencil-fill pencil-icon"></i>
     </div>
-
     <div class="user-profile-form">
       <h5 style="color: #012B4D; margin-bottom: 0;">Hi, <%= @user.name %></h5>
       <% if @user.photo.attached? %>
         <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
       <% end %>
-
       <br>
       <p style="color: #343a40;">Email: <%= @user.email %></p>
       <p style="color: #343a40;">Language: <%= @user.language %></p>
       <p style="color: #343a40;">Favorite Team: <%= @user.favourite_team %></p>
       <p style="color: #343a40;">Preferences: <%= @user.preferences %></p>
-
-
-      
       <%= link_to "Edit Profile", edit_user_registration_path %>
-      <%= link_to "Back", :back %>
-
+      <%= content_tag :div, class: "container" do %>
+        <%= link_to "Back", :back, class: "back-btn" %>
+      <% end %>
     </div>
   </div>
 </div>
