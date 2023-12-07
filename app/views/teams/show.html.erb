@@ -25,3 +25,44 @@
     </div>
   </div>
 </div>
+
+<!-- Add a section for upcoming games -->
+
+<style>
+  .team-details {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .team-details img {
+    max-width: 50%;
+    height: auto;
+    margin: 1rem;
+  }
+  .game-card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+  .game-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+</style>
+
+<div class="container mt-5">
+  <h2>Upcoming Games</h2>
+  <div class="row">
+    <% @team.upcoming_games.each do |game| %>
+      <div class="col-md-4">
+        <%= link_to game_path(game) do %>
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title"><%= Team.find(game.home_team_id).name %> vs <%= Team.find(game.away_team_id).name %></h5>
+              <p class="card-text">Date: <%= game.date %></p>
+              <p class="card-text">Location: <%= game.city %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
