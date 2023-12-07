@@ -48,7 +48,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 10px;
-    margin-left: 30px;
   }
 
   .edit-btn-container {
@@ -69,7 +68,7 @@
     color: #fff;
   }
 
-  .profile-picture-container {
+ .profile-picture-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,11 +76,26 @@
     position: relative;
   }
 
+  .profile-circle {
+    position: absolute;
+    width: 210px; /* Adjust the size of the circle */
+    height: 210px; /* Adjust the size of the circle */
+    border-radius: 50%;
+    background: linear-gradient(to bottom right, #004080 0%, rgb(17, 107, 123) 50%, #ffc107 80%, rgb(0, 153, 51) 100%);
+    clip-path: circle();
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 1; /* Behind the profile picture */
+  }
+
   .profile-image {
     width: 200px;
     height: 200px;
     border-radius: 50%;
     object-fit: cover;
+    z-index: 2; /* On top of the circle */
   }
 
   .pencil-btn-container {
@@ -131,6 +145,7 @@
     transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
     width: auto;
     margin-bottom: 20px;
+    margin-left: -30px;
   }
 
   .back-btn:hover,
@@ -139,7 +154,9 @@
     font-size: 18px;
     transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
   }
+
 </style>
+
 
 <div class="user-profile-container">
   <div class="user-profile-card">
@@ -152,6 +169,7 @@
       </div>
     </div>
     <div class="profile-picture-container">
+      <div class="profile-circle"></div>
       <% if @user.photo.attached? %>
         <%= cl_image_tag(@user.photo.key, height: 200, width: 200, crop: :fill, class: 'profile-image') %>
       <% else %>
@@ -171,7 +189,10 @@
       <p style="color: #343a40;">Language: <%= @user.language %></p>
       <p style="color: #343a40;">Favorite Team: <%= @user.favourite_team %></p>
       <p style="color: #343a40;">Preferences: <%= @user.preferences %></p>
-      <%= link_to "Edit Profile", edit_user_registration_path %>
+
+        <%= content_tag :div, class: "container" do %>
+      <% end %>
+
       <%= content_tag :div, class: "container" do %>
         <%= link_to "Back", :back, class: "back-btn" %>
       <% end %>
