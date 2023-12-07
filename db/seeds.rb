@@ -45,9 +45,7 @@ teams = [
 
 date = Date.new(2023, 12, 1)
 
-teams.combination(2).to_a.shuffle.each do |home_team, away_team|
+teams.combination(2).to_a.shuffle.each_with_index do |(home_team, away_team), i|
   Game.create(date: date, city: home_team.city, home_team: home_team, away_team: away_team)
-
-
-  date = date.next_day
+  date = date.next_day if (i + 1) % 6 == 0
 end
