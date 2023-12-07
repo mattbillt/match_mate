@@ -1,0 +1,27 @@
+<style>
+  .team-details {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .team-details img {
+    max-width: 50%;
+    height: auto;
+    margin: 1rem; /* Add margin around the image */
+  }
+</style>
+
+<div class="container mt-5">
+  <%= link_to 'Back', root_path, class: 'btn btn-primary mb-3' %>
+  <div class="row team-details">
+    <div class="col-md-6">
+      <img class="img-fluid" src="<%= @team.emblem %>" alt="<%= @team.name %>">
+    </div>
+    <div class="col-md-6">
+      <h1 class="display-4"><%= @team.name %></h1>
+      <p class="lead">City: <%= @team.city %></p>
+      <p class="lead">Country: <%= @team.country %></p>
+      <p><%= @team.bio %></p>
+    </div>
+  </div>
+</div>
