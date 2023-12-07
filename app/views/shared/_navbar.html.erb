@@ -1,4 +1,10 @@
 <style>
+   * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
   .navbar {
     background: linear-gradient(to left, #012B4D, #001626);
     margin-bottom: 0;
@@ -24,40 +30,41 @@
     border-color: #012B4D;
   }
 
-.nav-profile-picture a {
-  position: relative;
-  z-index: 3;
-}
-.nav-profile-picture {
-  cursor: pointer;
-  position: relative;
-  z-index: 3;
-}
+  .nav-profile-picture a {
+    position: relative;
+    z-index: 3;
+  }
 
-.nav-profile-image {
-  width: 35px; /* Set a fixed width for the image */
-  height: 35px; /* Set a fixed height for the image */
-  border-radius: 50%;
-  object-fit: cover;
-  z-index: 2; /* On top of the circle */
-}
+  .nav-profile-picture {
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+  }
 
-.nav-profile-circle {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  clip-path: circle(50% at 50% 50%);
-  border-radius: 50%;
-  background: linear-gradient(to bottom right, #004080 0%, rgb(17, 107, 123) 50%, #ffc107 80%, rgb(0, 153, 51) 100%);
-  clip-path: circle();
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  z-index: 1;
-}
+  .nav-profile-image {
+    width: 35px; /* Set a fixed width for the image */
+    height: 35px; /* Set a fixed height for the image */
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 2; /* On top of the circle */
+  }
 
+  .nav-profile-circle {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    clip-path: circle(50% at 50% 50%);
+    border-radius: 50%;
+    background: linear-gradient(to bottom right, #004080 0%, rgb(17, 107, 123) 50%, #ffc107 80%, rgb(0, 153, 51) 100%);
+    clip-path: circle();
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
 </style>
+
 
 <nav class="navbar navbar-expand-md">
   <div class="container d-lg-flex align-items-center">
