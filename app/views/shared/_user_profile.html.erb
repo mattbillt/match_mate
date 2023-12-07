@@ -181,9 +181,6 @@
     </div>
     <div class="user-profile-form">
       <h5 style="color: #012B4D; margin-bottom: 0;">Hi, <%= @user.name %></h5>
-      <% if @user.photo.attached? %>
-        <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
       <br>
       <p style="color: #343a40;">Email: <%= @user.email %></p>
       <p style="color: #343a40;">Language: <%= @user.language %></p>
