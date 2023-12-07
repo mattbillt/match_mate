@@ -1,0 +1,53 @@
+
+.info-group-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+
+  background-image: url("https://images.unsplash.com/photo-1459865264687-595d652de67e?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+}
+
+// .group-details {
+
+// }
+
+.group-header {
+  font-family: 'Black Ops One', sans-serif;
+  text-align: center;
+  margin-bottom: 20 px;
+}
+
+.teste {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  margin-right: 5px;
+}
+
+
+.buttons-group {
+
+  height: auto;
+  width: 80%;
+  margin-left: 15px;
+}
+
+.buttons-layout-group {
+  display: flex;
+  justify-content: space-around;
+  width: 48%;
+  margin: 0 auto;
+}
+
+
+.chatroom {
+  border-radius: 15px;
+  height: 85%;
+  width: 80%;
+
+}

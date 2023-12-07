@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :teams, only: [:show, :index]
+
   resources :users, only: [:show, :edit, :update]
   resources :groups, only: [:index]
 

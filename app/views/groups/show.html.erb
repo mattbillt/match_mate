@@ -1,3 +1,5 @@
+<!--
+
 <h1><%= @group.name %></h1>
 
 <p>
@@ -29,9 +31,12 @@
   <%= f.button :submit, 'Delete', data: { confirm: 'Are you sure?' } %>
 <% end %>
 
+<%= link_to 'Back', game_path(@group.game) %>
+-->
+
 <%# <%= link_to 'Chatroom', game_group_chatroom_path(@game, @group, @chatroom) %>
 
-
-<%= link_to 'Back', game_path(@group.game) %>
-
-<%= render 'chatrooms/chatbox' %>
+<div class="info-group-container">
+  <%= render 'group_details' %>
+  <%= render 'chatrooms/chatbox' %>
+</div>
