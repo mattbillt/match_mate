@@ -36,23 +36,22 @@
         <div class="row d-flex">
           <% @game.groups.each do |group| %>
             <div class="col-6">
-              <div class="card bg-newwhite text-primary border-primary shadow m-3" style="border-radius: 15px; height: auto; width: 100%;">
-                <div class="card-body d-flex ">
-                  <div>
-                    <p><strong><%= link_to group.name, game_group_path(@game, group) %> - <%= group.users.count %> users</strong></p>
-                    <p><%= group.description %></p>
-                  </div>
+              <div class="card bg-newwhite text-primary border-none shadow m-3" style="border-radius: 15px; height: auto; width: 100%;">
+                <div class="card-body text-center flex-column">
+                    <p>Name: <strong><%= link_to group.name, game_group_path(@game, group) %></strong></p>
+                    <p>Description: <%= group.description %></p>
+                    <p># of people: <strong><%= group.users.count%></strong></p>
                 </div>
               </div>
             </div>
           <% end %>
         </div>
         <div class="justify-content-center align-items-center text-center">
-          <%= link_to 'Create a Group', new_game_group_path(@game) %>
+          <%= link_to 'Create a Group', new_game_group_path(@game), class: "btn btn-warning rounded-pill shadow" %>
         </div>
       </div>
   </div>
-  <div class="justify-content-center align-items-center text-center">
-    <%= link_to "Back to Index", games_path %>
+  <div class="justify-content-center align-items-center text-center m-3">
+   <p> <%= link_to "Back to Index", games_path %></p>
   </div>
 </div>
