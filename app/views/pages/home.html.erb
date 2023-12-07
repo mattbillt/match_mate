@@ -1,56 +1,192 @@
-<section class="text-light text-center" style="background: linear-gradient(to right, #012B4D, #001626); display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden;">
-    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; position: relative; max-width: 1200px; overflow: hidden; margin-top: -15px;">
-        <div class="txt" style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 20px; position: relative; z-index: 1;">
-            <h2 class="mb-3" style="font-weight: bold; text-align: left;">
-                Dive into Brazil’s fan scene with
-                <span style="color: #ffc107; font-family: 'Black Ops One', cursive; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);">
-                    Match Mate
-                </span>
-            </h2>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #F2F3F4;;
+}
+.container-style {
+  margin-top: 0;
+}
 
-            <p class="small my-4" style="font-weight: 200; text-align: left;">
-                Chat, make friends, and plan match days together. Local fans can help you score tickets with tips and sharing the best deals. Sign up and jump into the action! 🇧🇷
-            </p>
-            <div class="d-flex align-items-center justify-content-center mb-3 text-center" style="width: 100%;">
-                <a href="<%= new_user_registration_path %>" class="btn btn-11">Sign up</a>
-            </div>
-        </div>
-        <div class="d-flex align-items-start justify-content-start overflow-hidden" style="flex: 1; position: relative; margin-top: 5px; margin-bottom: 5px; height: calc(100% - 10px);">
-            <img class="img-fluid rounded" src="https://i.imgur.com/cHGosIr.png" alt="Football supporters" style="width: auto; height: 100%; object-fit: contain; margin: 0; box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);">
-        </div>
+.today-matches-text {
+  font-size: 2rem;
+  text-align: center;
+  padding-top: 20px;
+  text-shadow: none;
+  padding-bottom: -20px;
+  margin-bottom: -20px;
+}
+
+.widget-container {
+  background-color: #fff;
+  border-radius: 15px;
+  width: calc(100% - 60px);
+  height: 270px;
+  box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+  margin: 0px 0px 20px 30px;
+}
+
+.apifutebol-tabela {
+  height: 300px;
+}
+
+.widget-embed-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F2F3F4;
+}
+
+.btn-six {
+  color: #f8f9fa;
+  background-color: #012B4D;
+}
+
+.btn-six:hover {
+  color: #012B4D;
+  background-color: #ffc107;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-five {
+  background-color: #FFFFFF;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn-hover:hover {
+  transform: scale(1.1);
+}
+
+#mySection {
+  padding-top: 20px;
+  padding-bottom: 5px;
+}
+
+#carousel {
+  box-shadow: 0 4px 8px 0 rgba(1, 43, 77, 0.2), 0 6px 20px 0 rgba(1, 43, 77, 0.4);
+}
+
+</style>
+
+<section id="mySection" class="text-light text-center container-style" style="background: linear-gradient(to right, #012B4D, #001626); display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden;">
+  <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; position: relative; max-width: 1200px; overflow: hidden; margin-top: -15px;">
+<div class="txt" style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 20px; position: relative; z-index: 1;">
+  <h2 class="mb-3" style="font-weight: bold; text-align: left;">
+    Dive into Brazil’s fan scene with
+    <span style="color: #ffc107; font-family: 'Black Ops One', cursive; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);">
+      Match Mate
+    </span>
+  </h2>
+  <p class="small my-4" style="font-weight: 200; text-align: left;">
+    Chat, make friends, and plan match days together. Local fans can help you score tickets with tips and sharing the best deals. Sign up and jump into the action! 🇧🇷
+  </p>
+  <div class="d-flex align-items-center justify-content-center mb-3 text-center" style="width: 100%;">
+    <% if current_user.nil? %>
+        <a href="<%= new_user_registration_path %>" class="btn btn-11">Sign up</a>
+        <% end %>
+      </div>
     </div>
+<div id="carousel" class="carousel" style="width: 500px; height: 300px; overflow: hidden; border-radius: 25px; position: relative;">
+    <img id="carouselImage" src="" alt="Carousel Image" style="width:100%; height: 100%; object-fit: cover;">
+    <div id="dots" style="position: absolute; bottom: 10px; width: 100%; text-align: center;"></div>
+</div>
+  </div>
 </section>
 
-      <section class="today-matches-section mb-4">
-        <h2 class="today-matches-text">Today's Matches</h2>
-      </section>
-
-    <!-- Cards Section -->
-    <section class="p-5">
-      <div class="container">
-        <div class="row text-center">
-          <% @games.first(5).each do |game| %>
-            <div class="col-md-4 mb-4">
-              <div class="card bg-newwhite text-primary border-primary shadow" style="border-radius: 15px; height: 200px; width: 100%;">
-                <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                  <p><%= "#{game.home_team.name} vs #{game.away_team.name}" %></p>
-                  <p><%= "#{game.city}, #{game.date}" %></p>
-                  <p><%= link_to "View Game", game_path(game), class: "btn btn-warning rounded-pill shadow" %></p>
+<div class="flex-container">
+  <h2 class="today-matches-text">Today's Matches</h2>
+  <div class="cards-container">
+    <section class="text-light text-center container-style">
+      <section class="p-5" style="padding-left: 0;">
+        <div class="container">
+          <div class="row text-center">
+            <% @games.first(5).each do |game| %>
+              <div class="col-md-4 mb-4">
+                <div class="card bg-newwhite text-primary shadow card-five" style="border-radius: 15px; height: auto; width: 100%;">
+                  <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                    <p><%= "#{game.home_team.name} vs #{game.away_team.name}" %></p>
+                    <p><%= "#{game.city}, #{game.date}" %></p>
+                    <p><%= link_to "View Game", game_path(game), class: "btn btn-warning rounded-pill shadow btn-hover" %></p>
+                  </div>
                 </div>
               </div>
-            </div>
-          <% end %>
-          <div class="col-md-4 mb-4">
-            <div class="card bg-newwhite text-primary border-primary shadow" style="border-radius: 15px; height: 200px; width: 100%;">
-              <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                <h5>Checkout all available matches.</h5>
-                <br>
-                <p><%= link_to "Explore", games_path, class: "btn btn-g3", style: "color: F2F3F4;" %></p>
+            <% end %>
+            <div class="col-md-4 mb-4">
+              <div class="card bg-transparent text-primary border-0" style="border-radius: 15px; height: auto; width: 100%; box-shadow: none;">
+                <div class="card-body" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                  <br>
+                  <p>Checkout all available matches</p>
+                  <p><%= link_to "Explore", games_path, class: "btn btn-six" %></p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </section>
   </div>
 </div>
+
+<div class="widget-embed-container">
+  <div class="widget-container">
+    <div class="apifutebol-tabela" data-client-id="WXSWC996ZX43"></div>
+  </div>
+
+  <div class="embedsocial-hashtag" data-ref="b17194e1fd2ccec500ac2d6701e403f7081d21af"></div>
+</div>
+
+<script>
+  (function(d, s, id) {
+    var js;
+    if (d.getElementById(id)) {
+      return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://embedsocial.com/cdn/ht.js";
+    d.getElementsByTagName("head")[0].appendChild(js);
+  }(document, "script", "EmbedSocialHashtagScript"));
+
+    let images = [
+        'https://img.freepik.com/fotos-gratis/retrato-de-fa-de-jogo-de-futebol-aproveitando-a-partida_23-2150860703.jpg',
+        'https://img.freepik.com/fotos-gratis/vista-do-torcedor-de-futebol-em-extase-com-rosto-pintado-curtindo-a-partida_23-2150885915.jpg',
+        'https://img.freepik.com/fotos-gratis/vista-do-fa-de-futebol-curtindo-a-partida_23-2150860785.jpg',
+        'https://img.freepik.com/fotos-gratis/retrato-de-fas-de-jogos-de-futebol-curtindo-a-partida_23-2150885831.jpg',
+        'https://img.freepik.com/fotos-gratis/vista-do-fa-de-futebol-curtindo-a-partida_23-2150860633.jpg',
+        'https://img.freepik.com/fotos-gratis/jogador-de-futebol-comemorando-a-vitoria_23-2150821520.jpg'
+    ];
+    let i = 0;
+
+    function createDots() {
+        let dots = document.getElementById('dots');
+        dots.innerHTML = '';
+        for (let j = 0; j < images.length; j++) {
+            let dot = document.createElement('span');
+            dot.style = 'display: inline-block; width: 10px; height: 10px; margin: 0 5px; background: ' + (j === i ? 'white' : 'rgba(255, 255, 255, 0.5)') + '; border-radius: 50%; cursor: pointer;';
+            dot.onclick = function() {
+                i = j;
+                changeImage();
+            };
+            dots.appendChild(dot);
+        }
+    }
+
+    function changeImage() {
+        document.getElementById('carouselImage').src = images[i];
+        createDots();
+        i = (i + 1) % images.length;
+    }
+
+    setInterval(changeImage, 7000);
+    changeImage();
+</script>

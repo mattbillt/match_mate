@@ -1,32 +1,32 @@
 <style>
-.navbar {
-  background: linear-gradient(to left, #012B4D, #001626);
-  margin-bottom: 0;
-}
+  .navbar {
+    background: linear-gradient(to left, #012B4D, #001626);
+    margin-bottom: 0;
+  }
 
-.navbar-title {
-  margin-left: 10px;
-  color: #F2F3F4;
-  font-family: 'Black Ops One', cursive;
-  font-size: 30px;
-  text-decoration: none;
-}
+  .navbar-title {
+    margin-left: 10px;
+    color: #F2F3F4;
+    font-family: 'Black Ops One', cursive;
+    font-size: 30px;
+    text-decoration: none;
+  }
 
-.navbar-title:hover {
-  text-decoration: none;
-}
+  .navbar-title:hover {
+    text-decoration: none;
+  }
 
-.navbar-toggler {
-  background-color: #F2F3F4;
-}
+  .navbar-toggler {
+    background-color: #F2F3F4;
+  }
 
-.navbar-toggler-icon {
-  border-color: #012B4D;
-}
+  .navbar-toggler-icon {
+    border-color: #012B4D;
+  }
 
-.profile-picture {
-  cursor: pointer;
-}
+  .profile-picture {
+    cursor: pointer;
+  }
 </style>
 
 <nav class="navbar navbar-expand-md">
@@ -42,7 +42,7 @@
       <span class="navbar-toggler-icon custom-toggler"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-end flex-column align-items-end" id="navmenu">
+    <div class="collapse navbar-collapse justify-content-end" id="navmenu">
       <ul class="navbar-nav ms-auto align-items-center">
         <li class="nav-item">
           <%= link_to 'Home', root_path, class: "nav-link #{'active' if current_page?(root_path)}", id: 'home-link' %>
@@ -50,9 +50,11 @@
         <li class="nav-item">
           <%= link_to 'Games', games_path, class: "nav-link #{'active' if current_page?(games_path)}", id: 'games-link' %>
         </li>
+
         <li class="nav-item">
-          <%= link_to 'Groups', groups_path, class: "nav-link #{'active' if current_page?(groups_path)}", id: 'groups-link' %>
+          <%#= link_to 'Groups', groups_path, class: "nav-link #{'active' if current_page?(groups_path)}", id: 'groups-link' #%>
         </li>
+
         <li class="nav-item me-4">
           <% if user_signed_in? %>
             <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-dark-blue' %>

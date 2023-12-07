@@ -23,6 +23,10 @@
     width: 400px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 40px;
+    display: flex;
+    flex-direction: column; /* Align children vertically */
+    justify-content: space-between; /* Distribute space between children */
+    height: 100%; /* Make the card take the full height of the card container */
   }
 
   .form-title {
@@ -50,27 +54,35 @@
 
   .form-actions {
     text-align: center;
-    margin-top: 20px;
+    margin-top: auto;
   }
 
-  .btn-11 {
-    display: block;
-    margin: 10px auto;
-    padding: 5px 10px;
+ .btn-11,
+  .back-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+    color: #F2F3F4;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
+    width: auto;
+    margin-bottom: 20px;
   }
 
   .back-btn {
-  padding-top: 0;
-  padding-bottom: 0;
-  border: none;
-  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
-  color: #808080;
-  text-decoration: none;
-  display: inline-block;
-  transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
-  width: auto;
-  margin-bottom: 20px;
-}
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+    color: #808080;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
+    width: auto;
+    margin-bottom: 20px;
+  }
 
   .back-btn:hover,
   .back-btn:focus {
@@ -116,9 +128,15 @@
 
 
 
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>">
+    <%= value %>
+  </div>
+<% end %>
+
 <div class="card-container">
   <div class="card">
-    <h2 class="form-title">Edit <%= resource_name.to_s.humanize %></h2>
+    <h2 class="form-title">Edit Profile</h2>
     <br>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), method: :put, html: { class: 'apple-form' }) do |f| %>
