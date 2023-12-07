@@ -1,27 +1,58 @@
-<div class="container">
-  <div class="d-flex">
-    <div class="col-6">
-      <h1><%= "#{@game.home_team.name} vs #{@game.away_team.name}" %></h1>
+<div class="container" >
 
-      <p><%= "City: #{@game.city}" %></p>
-      <p><%= "Date: #{@game.date}" %></p>
-    </div>
-    <div class="col-6">
-      <h2>Groups:</h2>
-      <ul>
-        <% @game.groups.each do |group| %>
-          <li>
-            <%= link_to group.name, game_group_path(@game, group) %> - <%= group.users.count %> users
-          </li>
-        <% end %>
-      </ul>
-
-      <%= link_to 'Create a Group', new_game_group_path(@game) %>
-    </div>
+  <div class="align-items-center justify-content-center m-3 text-center">
+    <h1 style="margin-bottom: 0; font-family: 'Black Ops One', cursive; color: #333333; font-weight: 300; font-size: 32px;">
+    <%="#{@game.home_team.name} vs #{@game.away_team.name}"%>
+    </h1>
+  </div>
+  <div class="row d-flex">
+      <div class="col-6">
+        <div class="card bg-newwhite text-primary border-primary shadow m-3" style="border-radius: 15px; height: auto; width: 100%;">
+          <div class="card-body d-flex justify-content-center align-items-center">
+            <div class="container">
+              <div class="row">
+                <div class="col-3 d-flex justify-content-center align-items-center ">
+                  <img src="<%= @game.home_team.emblem %>" class="emblem-image-home" alt="<%= @game.home_team.name %> Image">
+                </div>
+                <div class="col-6 flex-column justify-content-center align-items-center text-center">
+                    <p><%= "Location: #{@game.city}" %></p>
+                    <p><%= "Date: #{@game.date}" %></p>
+                    <img src="https://melhorinvestimento.net/wp-content/uploads/2023/11/Corinthians-negocia-participacao-da-Neo-Quimica-Arena-na-Bolsa-de-Valores.webp" alt="Corinthians Stadium" style="height: 150px; width: 200px;" class="m-3">
+                    <h4>Neo Química Arena</h4>
+                    <p>Address: Av. Miguel Ignácio Curi, 111 - Vila Carmosina, São Paulo - SP, 08295-005</p>
+                </div>
+                <div class="d-flex col-3 justify-content-center align-items-center ">
+                <img src="<%= @game.away_team.emblem %>" class="emblem-image-away" alt="<%= @game.away_team.name %> Image">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="text-center">
+        <h3 >Groups</h3>
+        </div>
+        <div class="row d-flex">
+          <% @game.groups.each do |group| %>
+            <div class="col-6">
+              <div class="card bg-newwhite text-primary border-primary shadow m-3" style="border-radius: 15px; height: auto; width: 100%;">
+                <div class="card-body d-flex ">
+                  <div>
+                    <p><strong><%= link_to group.name, game_group_path(@game, group) %> - <%= group.users.count %> users</strong></p>
+                    <p><%= group.description %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="justify-content-center align-items-center text-center">
+          <%= link_to 'Create a Group', new_game_group_path(@game) %>
+        </div>
+      </div>
   </div>
   <div class="justify-content-center align-items-center text-center">
     <%= link_to "Back to Index", games_path %>
   </div>
-
-
 </div>
