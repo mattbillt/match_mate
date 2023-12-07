@@ -73,25 +73,27 @@ body {
 }
 
 #carousel {
-  box-shadow: 0 5px 10px 0 rgba(1, 43, 77, 0.2), 0 6px 20px 0 rgba(1, 43, 77, 0.4);
+  box-shadow: 0 4px 8px 0 rgba(1, 43, 77, 0.2), 0 6px 20px 0 rgba(1, 43, 77, 0.4);
 }
 
 </style>
 
 <section id="mySection" class="text-light text-center container-style" style="background: linear-gradient(to right, #012B4D, #001626); display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden;">
   <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; position: relative; max-width: 1200px; overflow: hidden; margin-top: -15px;">
-    <div class="txt" style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 20px; position: relative; z-index: 1;">
-      <h2 class="mb-3" style="font-weight: bold; text-align: left;">
-        Dive into Brazil’s fan scene with
-        <span style="color: #ffc107; font-family: 'Black Ops One', cursive; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);">
-          Match Mate
-        </span>
-      </h2>
-      <p class="small my-4" style="font-weight: 200; text-align: left;">
-        Chat, make friends, and plan match days together. Local fans can help you score tickets with tips and sharing the best deals. Sign up and jump into the action! 🇧🇷
-      </p>
-      <div class="d-flex align-items-center justify-content-center mb-3 text-center" style="width: 100%;">
+<div class="txt" style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 20px; position: relative; z-index: 1;">
+  <h2 class="mb-3" style="font-weight: bold; text-align: left;">
+    Dive into Brazil’s fan scene with
+    <span style="color: #ffc107; font-family: 'Black Ops One', cursive; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);">
+      Match Mate
+    </span>
+  </h2>
+  <p class="small my-4" style="font-weight: 200; text-align: left;">
+    Chat, make friends, and plan match days together. Local fans can help you score tickets with tips and sharing the best deals. Sign up and jump into the action! 🇧🇷
+  </p>
+  <div class="d-flex align-items-center justify-content-center mb-3 text-center" style="width: 100%;">
+    <% if current_user.nil? %>
         <a href="<%= new_user_registration_path %>" class="btn btn-11">Sign up</a>
+        <% end %>
       </div>
     </div>
 <div id="carousel" class="carousel" style="width: 500px; height: 300px; overflow: hidden; border-radius: 25px; position: relative;">
