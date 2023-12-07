@@ -48,5 +48,6 @@ date = Date.new(2023, 12, 1)
 teams.combination(2).to_a.shuffle.each do |home_team, away_team|
   Game.create(date: date, city: home_team.city, home_team: home_team, away_team: away_team)
 
+
   date = date.next_day
 end
