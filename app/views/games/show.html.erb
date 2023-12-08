@@ -17,9 +17,9 @@
                 <div class="col-6 flex-column justify-content-center align-items-center text-center">
                     <p><%= "Location: #{@game.city}" %></p>
                     <p><%= "Date: #{@game.date}" %></p>
-                    <img src="https://melhorinvestimento.net/wp-content/uploads/2023/11/Corinthians-negocia-participacao-da-Neo-Quimica-Arena-na-Bolsa-de-Valores.webp" alt="Corinthians Stadium" style="height: 150px; width: 200px;" class="m-3">
-                    <h4>Neo Química Arena</h4>
-                    <p>Address: Av. Miguel Ignácio Curi, 111 - Vila Carmosina, São Paulo - SP, 08295-005</p>
+                    <img src="<%= @game.home_team.stadium %>" alt="<%= @game.home_team.stadium %> Image" style="height: 150px; width: 200px;" class="m-3">
+                    <h4><%= @game.home_team.stadium_name %></h4>
+                    <p><%= @game.home_team.address %></p>
                 </div>
                 <div class="d-flex col-3 justify-content-center align-items-center ">
                 <img src="<%= @game.away_team.emblem %>" class="emblem-image-away" alt="<%= @game.away_team.name %> Image">
