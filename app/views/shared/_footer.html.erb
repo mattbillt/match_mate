@@ -1,33 +1,42 @@
 <style>
-.footer {
-  background: linear-gradient(to right, rgb(1,43,77) 0%, rgb(1,43,77) 40%, rgb(17,107,123) 60%, rgb(28,174,130) 100%);
-  color: #F2F3F4;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 90px;
-}
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+  }
 
-.footer-info {
-  list-style-type: none;
-  padding: 0;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 15px;
-  font-size: 0.8em;
-}
+  .footer {
+    background: linear-gradient(to right, rgb(1, 43, 77) 0%, rgb(1, 43, 77) 40%, rgb(17, 107, 123) 60%, rgb(28, 174, 130) 100%);
+    color: #F2F3F4;
+    margin-top: auto; /* Push the footer to the bottom of the container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 90px;
+  }
 
-.footer-copyright {
-  text-align: center;
-  font-size: 0.8em;
-}
+  .footer-info {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    font-size: 0.8em;
+  }
+
+  .footer-copyright {
+    text-align: center;
+    font-size: 0.8em;
+  }
 </style>
+
+<div class="container">
+  <!-- Your page content goes here -->
+</div>
 
 <footer class="footer">
   <div class="container">
