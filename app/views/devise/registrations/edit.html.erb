@@ -24,9 +24,9 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 40px;
     display: flex;
-    flex-direction: column; /* Align children vertically */
-    justify-content: space-between; /* Distribute space between children */
-    height: 100%; /* Make the card take the full height of the card container */
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
   }
 
   .form-title {
@@ -36,7 +36,6 @@
     margin-bottom: 20px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   }
-
 
   .apple-form {
     text-align: left;
@@ -57,7 +56,7 @@
     margin-top: auto;
   }
 
- .btn-11,
+  .btn-11,
   .back-btn {
     padding: 10px 20px;
     border: none;
@@ -72,16 +71,7 @@
   }
 
   .back-btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
     color: #808080;
-    text-decoration: none;
-    display: inline-block;
-    transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
-    width: auto;
-    margin-bottom: 20px;
   }
 
   .back-btn:hover,
@@ -127,24 +117,21 @@
   }
 
   .profile-circle {
-  position: absolute;
-  width: 210px;
-  height: 210px;
-  border-radius: 50%;
-  background: linear-gradient(to bottom right, #004080 0%, rgb(17, 107, 123) 50%, #ffc107 80%, rgb(0, 153, 51) 100%);
-  clip-path: circle();
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin-top: -28px; /* Half of the height */
-  margin-left: -1px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  z-index: 1;
-}
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom right, #004080 0%, rgb(17, 107, 123) 50%, #ffc107 80%, rgb(0, 153, 51) 100%);
+    clip-path: circle();
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -28px;
+    margin-left: -1px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
 </style>
-
-
-
 
 <% flash.each do |key, value| %>
   <div class="alert alert-<%= key %>">
@@ -168,14 +155,20 @@
             <img src="https://via.placeholder.com/150" alt="Placeholder" class="user-image">
           <% end %>
           <div class="profile-circle"></div>
+          <div id="delete-profile-pic" data-user-id="<%= @user.id %>">
           <div class="trash-button-container">
-            <button type="button" class="btn btn-danger">
+            <%= link_to(
+              delete_profile_picture_user_path(current_user),
+              method: :delete,
+              data: { confirm: 'Are you sure you want to delete your profile picture?' },
+              class: 'btn btn-danger'
+            ) do %>
               <i class="bi bi-trash-fill"></i>
-            </button>
+            <% end %>
+          </div>
           </div>
         </div>
         <%= f.input :photo, as: :file, class: 'form-control' %>
-
         <%= f.input :email, required: true, autofocus: true, class: 'form-control' %>
         <%= f.input :username, required: true, class: 'form-control' %>
         <%= f.input :name, required: true, class: 'form-control' %>
@@ -216,3 +209,39 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const deleteButton = document.getElementById("delete-profile-pic");
+
+    if (deleteButton) {
+      deleteButton.addEventListener("click", function () {
+        const confirmDelete = confirm("Are you sure you want to delete your profile picture?");
+
+        if (confirmDelete) {
+          // Perform the action to delete the profile picture here
+          // You may want to submit a form or make an AJAX request to handle the deletion
+          console.log("Profile picture deleted!");
+        }
+      });
+    }
+
+    const fileInput = document.querySelector('.form-control[type="file"]');
+    const imgPreview = document.querySelector('.user-image');
+
+    fileInput.addEventListener('change', function (event) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+
+      reader.onloadend = function () {
+        imgPreview.src = reader.result;
+      }
+
+      if (file) {
+        reader.readAsDataURL(file);
+      } else {
+        imgPreview.src = "";
+      }
+    });
+  });
+</script>
