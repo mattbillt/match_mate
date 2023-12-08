@@ -12,9 +12,9 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "Profile successfully updated!"
-      redirect_to edit_user_path(@user)
+      redirect_to edit_user_path(@user), notice: 'Profile was successfully updated.'
     else
       render :edit
     end
@@ -24,6 +24,11 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to users_url, notice: 'User was successfully destroyed.'
   end
+  def delete_profile_picture
+    current_user.photo.purge if current_user.photo.attached?
+    redirect_to edit_user_path(current_user), notice: 'Profile picture successfully deleted!'
+  end
+
 
   private
 

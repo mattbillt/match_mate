@@ -20,9 +20,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :teams, only: [:show, :index]
+  resources :users, only: [:show, :edit, :update] do
+    member do
+      delete 'delete_profile_picture'
+    end
+  end
 
-  resources :users, only: [:show, :edit, :update]
+
+  resources :teams, only: [:show, :index]
   resources :groups, only: [:index]
 
   get "up" => "rails/health#show", as: :rails_health_check

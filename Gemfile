@@ -88,3 +88,6 @@ end
 # gem 'carrierwave'
 
 gem 'cloudinary', '~> 1.17.0'
+
+
+gem "rails-ujs"
