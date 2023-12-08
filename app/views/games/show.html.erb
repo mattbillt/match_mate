@@ -30,6 +30,11 @@
   font-size: 18px;
   transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
 }
+
+  strong:hover {
+    font-size: 1.3em;
+  }
+
 </style>
 
 <div class="container" style="padding: 15px;">
@@ -79,19 +84,18 @@
                 <div style="background-color: #ffc107; border-radius: 15px 15px 0 0; padding: 8px;">
   <p style="font-size: 16px; color: #333333; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
                     <strong style="color: #012B4D; display: flex; justify-content: center;">
-                      <%= link_to group.name, game_group_path(@game, group), style: "color: #012B4D; text-decoration: none; background-color: inherit; padding: 0;" %>
-                    </strong>
+  <%= link_to group.name, game_group_path(@game, group), style: "color: #012B4D; text-decoration: none; background-color: inherit; padding: 0; transition: font-size 0.3s;" %>
+</strong>
                   </p>
                 </div>
                 <p style="font-size: 16px; color: #333333; text-align: left; margin: 10px 0;">
                   Description: <%= group.description %>
                 </p>
                 <p style="font-size: 16px; color: #333333;">
-               <strong style="display: flex; align-items: center;">
-  <i class="bi bi-people" style="margin-right: 5px;"></i>
-  <%= group.users.count %>
-</strong>
-
+                 <strong style="display: flex; align-items: center; justify-content: flex-end;">
+                 <i class="bi bi-people" style="margin-left: 5px;"></i>
+                 <%= group.users.count %>
+                 </strong>
                 </p>
               </div>
             </div>
