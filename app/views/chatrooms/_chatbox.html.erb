@@ -1,7 +1,18 @@
-<!-- app/views/chatrooms/_chatbox.html.erb -->
+<style>
+  h2 {
+    text-align: center;
+    margin-top: 15px;
+    color: #343a40;
+    font-family: 'Black Ops One', cursive;
+    font-size: 1.em; /* Adjust the font size as needed */
+  }
 
-<div class="container chatroom " data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-  <h2><%= @group.name %>'s chat</h2>
+  .container.chatroom {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+</style>
+<div class="container chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+ <h2 style="text-align: center; margin-top: 15px; color: #343a40;"><%= @group.name %></h2>
 
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
@@ -19,7 +30,7 @@
     placeholder: "Message ##{@chatroom.name}",
     wrapper_html: {class: "flex-grow-1"}
   %>
-  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+  <%= f.submit "Send", class: "btn btn-primary mb-3", style: "margin-left: 10px;" %>
 <% end %>
 
 </div>

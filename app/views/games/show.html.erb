@@ -1,57 +1,115 @@
-<div class="container" >
+<style>
+  .btn-custom {
+    border: none;
+    background-color: #012B4D;
+    color: #ffffff;
+    transition: background-color 0.3s, color 0.3s;
+  }
 
+  .btn-custom:hover {
+    background-color: #ffc107;
+    color: #012B4D;
+  }
+
+  .back-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+  color: #919191;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
+  width: auto;
+  margin-bottom: 20px;
+}
+
+.back-btn:hover,
+.back-btn:focus {
+  transform: scale(1.1);
+  font-size: 18px;
+  transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
+}
+
+  strong:hover {
+    font-size: 1.3em;
+  }
+
+</style>
+
+<div class="container" style="padding: 15px;">
   <div class="align-items-center justify-content-center m-3 text-center">
     <h1 style="margin-bottom: 0; font-family: 'Black Ops One', cursive; color: #333333; font-weight: 300; font-size: 32px;">
-    <%="#{@game.home_team.name} vs #{@game.away_team.name}"%>
+      <%= "#{@game.home_team.name} vs #{@game.away_team.name}" %>
     </h1>
   </div>
+
   <div class="row d-flex">
-      <div class="col-6">
-        <div class="card bg-newwhite text-primary border-primary shadow m-3" style="border-radius: 15px; height: auto; width: 100%;">
-          <div class="card-body d-flex justify-content-center align-items-center">
-            <div class="container">
-              <div class="row">
-                <div class="col-3 d-flex justify-content-center align-items-center ">
-                  <img src="<%= @game.home_team.emblem %>" class="emblem-image-home" alt="<%= @game.home_team.name %> Image">
+    <div class="col-md-6">
+      <div class="card new-card" style="border-radius: 15px; height: auto; width: 100%; background-color: #FFFFFF; border: none; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);">
+        <div class="card-body d-flex justify-content-center align-items-center">
+          <div class="container">
+            <div class="row">
+              <div class="col-3 d-flex justify-content-center align-items-center">
+                <img src="<%= @game.home_team.emblem %>" class="emblem-image-home" alt="<%= @game.home_team.name %> Image">
+              </div>
+              <div class="col-6 flex-column justify-content-center align-items-center text-center">
+                <p style="font-size: 18px; color: #333333;"><strong><%= "Location: #{@game.city}" %></strong></p>
+                <p style="font-size: 18px; color: #333333;"><strong><%= "Date: #{@game.date}" %></strong></p>
+                <div class="m-3">
+                  <img src="https://melhorinvestimento.net/wp-content/uploads/2023/11/Corinthians-negocia-participacao-da-Neo-Quimica-Arena-na-Bolsa-de-Valores.webp" alt="Corinthians Stadium" style="height: 150px; width: 200px; border-radius: 15px;" class="shadow">
                 </div>
-                <div class="col-6 flex-column justify-content-center align-items-center text-center">
-                    <p><%= "Location: #{@game.city}" %></p>
-                    <p><%= "Date: #{@game.date}" %></p>
-                    <img src="https://melhorinvestimento.net/wp-content/uploads/2023/11/Corinthians-negocia-participacao-da-Neo-Quimica-Arena-na-Bolsa-de-Valores.webp" alt="Corinthians Stadium" style="height: 150px; width: 200px;" class="m-3">
-                    <h4>Neo Química Arena</h4>
-                    <p>Address: Av. Miguel Ignácio Curi, 111 - Vila Carmosina, São Paulo - SP, 08295-005</p>
-                </div>
-                <div class="d-flex col-3 justify-content-center align-items-center ">
+                <h4 style="font-size: 24px; color: #333333;">Neo Química Arena</h4>
+                <p style="font-size: 16px; color: #333333;">Address: Av. Miguel Ignácio Curi, 111 - Vila Carmosina, São Paulo - SP, 08295-005</p>
+              </div>
+              <div class="col-3 d-flex justify-content-center align-items-center">
                 <img src="<%= @game.away_team.emblem %>" class="emblem-image-away" alt="<%= @game.away_team.name %> Image">
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-6">
-        <div class="text-center">
-        <h3 >Groups</h3>
-        </div>
-        <div class="row d-flex">
-          <% @game.groups.each do |group| %>
-            <div class="col-6">
-              <div class="card bg-newwhite text-primary border-none shadow m-3" style="border-radius: 15px; height: auto; width: 100%;">
-                <div class="card-body text-center flex-column">
-                    <p>Name: <strong><%= link_to group.name, game_group_path(@game, group) %></strong></p>
-                    <p>Description: <%= group.description %></p>
-                    <p># of people: <strong><%= group.users.count%></strong></p>
+    </div>
+
+    <div class="col-md-6">
+      <div class="text-center">
+        <h3 style="font-size: 32px; font-weight:bold; color: #333333;">Groups</h3>
+      </div>
+
+      <div class="row">
+        <% @game.groups.each do |group| %>
+          <div class="col-md-6 mb-3">
+            <div class="card new-card" style="border-radius: 15px; height: auto; width: 100%; background-color: #FFFFFF; border: none; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);">
+              <div class="card-body text-center flex-column">
+                <div style="background-color: #ffc107; border-radius: 15px 15px 0 0; padding: 8px;">
+  <p style="font-size: 16px; color: #333333; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+                    <strong style="color: #012B4D; display: flex; justify-content: center;">
+  <%= link_to group.name, game_group_path(@game, group), style: "color: #012B4D; text-decoration: none; background-color: inherit; padding: 0; transition: font-size 0.3s;" %>
+</strong>
+                  </p>
                 </div>
+                <p style="font-size: 16px; color: #333333; text-align: left; margin: 10px 0;">
+                  Description: <%= group.description %>
+                </p>
+                <p style="font-size: 16px; color: #333333;">
+                 <strong style="display: flex; align-items: center; justify-content: flex-end;">
+                 <i class="bi bi-people" style="margin-left: 5px;"></i>
+                 <%= group.users.count %>
+                 </strong>
+                </p>
               </div>
             </div>
-          <% end %>
-        </div>
-        <div class="justify-content-center align-items-center text-center">
-          <%= link_to 'Create a Group', new_game_group_path(@game), class: "btn btn-warning rounded-pill shadow" %>
-        </div>
+          </div>
+        <% end %>
       </div>
+
+      <div class="justify-content-center align-items-center text-center" style="margin-top: 20px;">
+  <%= link_to 'Create a Group', new_game_group_path(@game), class: "btn btn-custom rounded-pill shadow" %>
+</div>
+    </div>
   </div>
+
   <div class="justify-content-center align-items-center text-center m-3">
-   <p> <%= link_to "Back to Index", games_path %></p>
+    <p><%= link_to "Back", games_path, class: "back-btn", style: "font-size: 16px; color: #919191;" %></p>
   </div>
 </div>

@@ -1,5 +1,7 @@
 import "@hotwired/turbo-rails";
 import "controllers";
+import Rails from "@rails/ujs"
+Rails.start()
 
 // Uncomment the following lines if you are using Flatpickr
 // import flatpickr from "flatpickr";

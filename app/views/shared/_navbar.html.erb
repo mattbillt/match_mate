@@ -1,11 +1,16 @@
 <style>
+   * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
   .navbar {
     background: linear-gradient(to left, #012B4D, #001626);
     margin-bottom: 0;
   }
 
   .navbar-title {
-    margin-left: 10px;
     color: #F2F3F4;
     font-family: 'Black Ops One', cursive;
     font-size: 30px;
@@ -24,32 +29,41 @@
     border-color: #012B4D;
   }
 
-.profile-picture a {
-  position: relative;
-  z-index: 3;
-}
-.profile-picture {
-  cursor: pointer;
-  position: relative;
-  z-index: 3;
-}
+  .nav-profile-picture a {
+    position: relative;
+    z-index: 3;
+  }
 
-.profile-circle {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  clip-path: circle(50% at 50% 50%);
-  border-radius: 50%;
-  background: linear-gradient(to bottom right, #004080 0%, rgb(17, 107, 123) 50%, #ffc107 80%, rgb(0, 153, 51) 100%);
-  clip-path: circle();
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  z-index: 1;
-}
+  .nav-profile-picture {
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+  }
 
+  .nav-profile-image {
+    width: 35px; /* Set a fixed width for the image */
+    height: 35px; /* Set a fixed height for the image */
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 2; /* On top of the circle */
+  }
+
+  .nav-profile-circle {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    clip-path: circle(50% at 50% 50%);
+    border-radius: 50%;
+    background: linear-gradient(to bottom right, #004080 0%, rgb(17, 107, 123) 50%, #ffc107 80%, rgb(0, 153, 51) 100%);
+    clip-path: circle();
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
 </style>
+
 
 <nav class="navbar navbar-expand-md">
   <div class="container d-lg-flex align-items-center">
@@ -77,7 +91,6 @@
     <%= link_to 'Teams', teams_path, class: "nav-link #{'active' if current_page?(teams_path)}", id: 'teams-link' %>
 
         </li>
-        -->
         <li class="nav-item me-4">
           <% if user_signed_in? %>
             <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-dark-blue' %>
@@ -88,17 +101,17 @@
 
         <% if user_signed_in? %>
           <li class="nav-item">
-            <div class="profile-picture me-2 d-md-block">
-              <% if current_user.photo.attached? %>
-                <%= link_to profile_path do %>
-                  <%= cl_image_tag(current_user.photo.key, width: '35', height: '35', crop: :fill, class: 'rounded-circle profile-image') %>
-                <% end %>
-              <% else %>
-                <%= link_to profile_path do %>
-                  <%= image_tag 'https://placehold.co/40x40', alt: 'placeholder', class: 'rounded-circle profile-image', width: '35', height: '35' %>
-                <% end %>
-              <% end %>
-              <div class="profile-circle"></div>
+            <div class="nav-profile-picture me-2 d-md-block">
+       <% if current_user.photo.attached? %>
+  <%= link_to profile_path do %>
+    <%= cl_image_tag(current_user.photo.key, width: '35', height: '35', crop: :fill, class: 'rounded-circle nav-profile-image') %>
+  <% end %>
+<% else %>
+  <%= link_to profile_path do %>
+    <%= image_tag 'https://placehold.co/40x40', alt: 'placeholder', class: 'rounded-circle nav-profile-image', width: '35', height: '35' %>
+  <% end %>
+<% end %>
+              <div class="nav-profile-circle"></div>
             </div>
           </li>
         <% end %>
