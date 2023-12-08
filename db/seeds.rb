@@ -112,10 +112,10 @@ teams = [
   fluminense, fortaleza, gremio, goias, inter, palmeiras, parana, santos, sp, vasco
 ]
 
-date = Date.new(2023, 12, 1)
-
-teams.combination(2).to_a.shuffle.each_with_index do |(home_team, away_team), i|
-  Game.create(date: date, city: home_team.city, home_team: home_team, away_team: away_team)
-
-  date = date.next_day if ((i + 1) % 6).zero?
+date = Date.today
+20.times do
+  teams.shuffle.each_slice(2).with_index do |(home_team, away_team), i|
+    Game.create(date: date, city: home_team.city, home_team: home_team, away_team: away_team)
+    date = date.next_day if ((i + 1) % 5).zero? # Advance to the next day after 5 games (10 teams)
+  end
 end
